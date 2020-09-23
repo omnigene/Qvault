@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ebb5fd6-6d37-4287-881a-a22eb5be131d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/static/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/auth/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/auth/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/auth/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/js/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/form_constructor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Qvault.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Qvault.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qvault.py" beforeDir="false" afterPath="$PROJECT_DIR$/qvault.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,9 +24,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
-        <option value="Python Script" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -37,11 +42,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyProject\Qvault\app\templates\auth" />
       <recent name="E:\PyProject\Flask\Qvault\app" />
       <recent name="E:\PyProject\Flask\Qvault" />
     </key>
@@ -67,7 +74,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -93,6 +100,8 @@
       <updated>1600759429109</updated>
       <workItem from="1600759430386" duration="3247000" />
       <workItem from="1600820987158" duration="15174000" />
+      <workItem from="1600864303872" duration="98000" />
+      <workItem from="1600864402887" duration="4515000" />
     </task>
     <task id="LOCAL-00001" summary="Build project framework">
       <created>1600766206161</created>
@@ -135,11 +144,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="Build project framework" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Qvault$config.coverage" NAME="config Coverage Results" MODIFIED="1600822583442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Qvault$views.coverage" NAME="views Coverage Results" MODIFIED="1600765611767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
     <SUITE FILE_PATH="coverage/Qvault$Flask__app_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1600765557744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1600850475347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Qvault$Qvault.coverage" NAME="Qvault Coverage Results" MODIFIED="1600821101760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1600870107557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py___1_.coverage" NAME="Flask (qvault.py) (1) Coverage Results" MODIFIED="1600822648077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Qvault$config.coverage" NAME="config Coverage Results" MODIFIED="1600822583442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

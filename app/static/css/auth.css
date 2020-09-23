@@ -1,0 +1,142 @@
+.brand{
+    font-family: "Constantia","Candara","Fredericka the Great","Dosis","Book Antiqua", serif;
+    font-weight: bolder;
+    margin: 30px 20px auto;
+    text-align: center;
+    font-size: 296%;
+}
+form{
+    width:36%;
+    min-width: 360px;
+    margin: 20px auto;
+}
+/* 选项卡标签容器 */
+#tab-list {
+    text-align: center;
+    padding-bottom: 10px;
+}
+/* 改写选项卡标签的Bootstrap默认样式，须要用id定位标签 */
+#mobile-tab, #email-tab{
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color:darkgrey;
+    font-size: 18px;
+    height:90%;
+}
+#mobile-tab.active, #email-tab.active{
+    border-bottom: 1.5px solid #0052e6;
+    color: #0052e6;
+}
+/* 信息提示框 */
+#alert{
+    margin-bottom: 0;
+    width: 100%;
+    background-color: #0052e6;
+    border: none;
+    color: white;
+}
+/* 信息提示框图标 */
+i{
+    margin-right: 10px;
+}
+/* 选项卡内容 */
+.tab-pane{
+    margin-bottom: 18px;
+    padding-top: 10px;
+}
+/* 输入框组 */
+.input-group{
+    margin-bottom: 18px;
+}
+input.form-control:focus,
+input.form-control:hover{
+    border:1px solid #0052e6;
+    box-shadow:0 0 15px rgba(0,82,230,0.3) ;
+    outline: none;
+}
+/* 输入框验证错误及验证通过的提示样式 */
+p {
+    font-size: 14px;
+    background-repeat: no-repeat;
+    background-position-y: 1.8px;
+}
+.errors-icon {
+    margin-top:5px;
+    margin-left: 11px;
+    padding-left: 22px;
+    background-image: url("../icon/exclamation-circle-fill.svg");
+    color: red;
+}
+.check-icon {
+    background-image: url("../icon/check-circle-fill.svg");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+/* 验证码输入框 */
+#code{
+    float:left;width:67%;
+    margin-right:3%;
+}
+#code[disabled],#code[disabled]:hover{
+    box-shadow: none;
+    border-color: #ced4da;
+    cursor: not-allowed;
+}
+/* 获取验证码按钮 */
+#send{
+    width:100%;
+    box-shadow:0 0 15px rgba(0,82,230,0.5) ;
+    color: #0052e6;
+    border: solid 1px;
+    animation-name: breath;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+/* 按钮动画效果 */
+@keyframes breath {
+    0%{
+        box-shadow:5px 3px 12px rgba(0,82,230,0.7) ;
+        opacity: 1;
+    }
+    50%{
+        box-shadow:0 0 0 rgba(0,82,230,0.5) ;
+        text-shadow: none;
+        opacity: 0.9;
+    }
+    100%{
+        box-shadow:5px 3px 12px rgba(0,82,230,0.7) ;
+        opacity: 1;
+    }
+}
+#send[disabled],#send[disabled]:hover{
+    cursor: not-allowed;
+    box-shadow: none;
+    animation: none;
+    background-color: transparent;
+    color:#0052e6;
+}
+#send:hover{
+    background-color: #0052e6;
+    border-color: #0052e6;
+    color: white;
+}
+#send:active{
+    background-color: transparent;
+    color:#0052e6;
+}
+/* 改写提交按钮的Bootstrap默认样式 */
+#submit{
+    background-color: rgba(0,82,230,0.5);
+    font-size: 18px;
+    color:white;
+    font-weight: bold;
+}
+#submit:hover{
+    background-color: rgb(0,82,230);
+    box-shadow:0 0 15px rgba(0,82,230,0.5) ;
+}
