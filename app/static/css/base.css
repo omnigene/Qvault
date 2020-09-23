@@ -1,0 +1,36 @@
+.navbar{
+    padding: 6px 32px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+}
+
+.navbar-brand{
+    font-family: "Constantia","Book Antiqua", serif;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-right: 42px;
+}
+
+.v{
+    color: #005bff;
+}
+
+.nav-item{
+    margin-right:16px;
+}
+
+.btn-outline-custom {
+    border-color: black;
+    color: black;
+}
+.btn-outline-custom:hover{
+    background-color: #0052e6;
+    color:white;
+    border-color: #0052e6;
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+    box-shadow:3px 3px 12px 1px rgba(0,91,255,0.5) ;
+}
+.btn-outline-custom:active{
+    border-color: #0049cc;
+    color: #0049cc;
+    background-color: transparent;
+}

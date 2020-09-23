@@ -1,7 +1,5 @@
 import os
 
-import os
-
 class Config:
     # 设置密钥
     SECRET_KEY=os.urandom(24)
