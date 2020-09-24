@@ -4,7 +4,7 @@ class Config:
     # 设置密钥
     SECRET_KEY=os.urandom(24)
     # 设置数据库连接配置
-    MYSQL_PASSWORD=os.environ.get('MYSQL_PASSWORD')
+    MYSQL_PASSWORD=os.environ.get('MYSQL_PASSWORD') or 999333
     URI='mysql+mysqlconnector://root:{}@127.0.0.1:3306/{}?charset=utf8mb4'
     # 关闭SQLAlchemy警告提示
     SQLALCHEMY_TRACK_MODIFICATIONS=False

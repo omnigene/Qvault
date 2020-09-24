@@ -12,43 +12,43 @@
 {% block navbar %}{% endblock %}
 
 {% block body_content %}
-<!-- 导入表单生成辅助模板文件form_constructor.html-->
-{% from "auth/form_constructor.html" import render_field %}
-<h1 class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</h1>
-<form action="{{ url_for('auth.register') }}" method="post" autocomplete="off" novalidate>
-    <!-- Flask-WTF默认开启CSRF保护，添加下面代码以获取CSRF令牌，否则提交表单会报错-->
-    {{ form.csrf_token }}
-    <!-- 选项卡标签，tablist的href指向对应tabpanel的id-->
-    <div id="tab-list" class="list-group list-group-horizontal" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="mobile-tab" data-toggle="list" href="#mobile-pane" role="tab">手机注册</a>
-        <a class="list-group-item list-group-item-action" id="email-tab" data-toggle="list" href="#email-pane" role="tab">邮箱注册</a>
-    </div>
-    <!-- 消息提示框（提示验证码短信已成功发送），默认不显示-->
-    <div id="alert" class="alert alert-primary" role="alert" style="display: none;">
-        <span></span>
-    </div>
-    <!-- 选项卡内容-->
-    <div id="tab-content" class="tab-content">
-        <div class="tab-pane active" id="mobile-pane" role="tabpanel">
-            {{ render_field(form.mobile) }}
-            <div class="input-wrap">
-                <input type="text" class="form-control" id="code" placeholder="验证码" onfocus="this.placeholder=''" onblur="this.placeholder='验证码'" disabled>
-                <div class="input-group-append">
-                    <button class="btn" type="button" id="send" data-appid="appId" data-cbfn="callback" disabled>获取验证码</button>
+    <!-- 导入表单生成辅助模板文件form_constructor.html-->
+    {% from "auth/form_constructor.html" import render_field %}
+    <h1 class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</h1>
+    <form action="{{ url_for('auth.register') }}" method="post" autocomplete="off" novalidate>
+        <!-- Flask-WTF默认开启CSRF保护，添加下面代码以获取CSRF令牌，否则提交表单会报错-->
+        {{ form.csrf_token }}
+        <!-- 选项卡标签，tablist的href指向对应tabpanel的id-->
+        <div id="tab-list" class="list-group list-group-horizontal" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="mobile-tab" data-toggle="list" href="#mobile-pane" role="tab">手机注册</a>
+            <a class="list-group-item list-group-item-action" id="email-tab" data-toggle="list" href="#email-pane" role="tab">邮箱注册</a>
+        </div>
+        <!-- 消息提示框（提示验证码短信已成功发送），默认不显示-->
+        <div id="alert" class="alert alert-primary" role="alert" style="display: none;">
+            <span></span>
+        </div>
+        <!-- 选项卡内容-->
+        <div id="tab-content" class="tab-content">
+            <div class="tab-pane active" id="mobile-pane" role="tabpanel">
+                {{ render_field(form.mobile) }}
+                <div class="input-wrap">
+                    <input type="text" class="form-control" id="code" placeholder="验证码" onfocus="this.placeholder=''" onblur="this.placeholder='验证码'" disabled>
+                    <div class="input-group-append">
+                        <button class="btn" type="button" id="send" data-appid="appId" data-cbfn="callback" disabled>获取验证码</button>
+                    </div>
+                    <p></p>
                 </div>
-                <p></p>
+            </div>
+            <div class="tab-pane" id="email-pane" role="tabpanel">
+                {{ render_field(form.email) }}
             </div>
         </div>
-        <div class="tab-pane" id="email-pane" role="tabpanel">
-            {{ render_field(form.email) }}
-        </div>
-    </div>
-    {{ render_field(form.username) }}
-    {{ render_field(form.password) }}
-    {{ render_field(form.password1) }}
-    <p style="font-size: 16px;margin-left:5px;">已有账号？<a href="#" style="color:#0052e6;">登录</a></p>
-    {{ form.submit(class='btn btn-block') }}
-</form>
-<!-- 导入实现前端表单验证功能的js文件-->
-<script src="{{ url_for('static',filename='js/register.js') }}"></script>
+        {{ render_field(form.username) }}
+        {{ render_field(form.password) }}
+        {{ render_field(form.password1) }}
+        <p style="font-size: 16px;margin-left:5px;">已有账号？<a href="#" style="color:#0052e6;">登录</a></p>
+        {{ form.submit(class='btn btn-block') }}
+    </form>
+    <!-- 导入实现前端表单验证功能的js文件-->
+    <script src="{{ url_for('static',filename='js/register.js') }}"></script>
 {% endblock %}
