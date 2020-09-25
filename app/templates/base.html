@@ -11,8 +11,8 @@
     {% block head_content %}{% endblock %}
 </head>
 <body>
-    <!-- 添加导航栏块，便于在不需要导航栏的页面，用空的导航栏块进行覆盖 -->
-    {% block navbar %}
+<!-- 添加导航栏块，便于在不需要导航栏的页面，用空的导航栏块进行覆盖 -->
+{% block navbar %}
     <!-- 修改'navbar-expand-lg'为'navbar-expand-md'，将折叠断点由991px降到768px -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Q<span class="v">v</span>ault</a>
@@ -37,14 +37,32 @@
                 </li>
             </ul>
             <!-- 沿用Bootstrap按钮的class命名规则，可保留其基本风格 -->
-            <button class="btn btn-outline-custom">登录</button>
+            <button class="btn btn-outline-custom" data-toggle="modal" data-target="#authModal">登录</button>
         </div>
     </nav>
-    {% endblock %}
 
-    <!-- 注：block的名称不能包含连接号'-'，否则会报错，可用下划线代替 -->
-    {% block body_content %}{% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+            <div class="modal-content" id="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+{#                    <h1 class="title">Join Q<span class="v" style="color:#0052e6;">v</span>ault.</h1>#}
+                    <div class="iframe_container">
+                        <iframe src="{{ url_for('auth.register') }}"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- 注：block的名称不能包含连接号'-'，否则会报错，可用下划线代替 -->
+{% block body_content %}{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

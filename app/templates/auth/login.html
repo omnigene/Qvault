@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}登录{% endblock %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/auth.css') }}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block body_content %}
+    {% from "auth/form_constructor.html" import render_field %}
+    <h1 class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault · </h1>
+    <form action="{{ url_for('auth.login') }}" method="post" autocomplete="off" novalidate>
+        {{ form.csrf_token }}
+        {{ render_field(form.account) }}
+        {{ render_field(form.input_password) }}
+        <div class="custom-control custom-checkbox mb-3">
+            {{ form.remember_me(class="custom-control-input", id="customControlInline") }}
+            <label class="custom-control-label" for="customControlInline">记住我 | </label>
+            <a href="#" class="forget-password">忘记密码？</a>
+        </div>
+        {{ form.submit(class="btn btn-block") }}
+        <hr>
+        <p class="link-register" style="font-size:16px;margin-left: 5px">没有账号？<a href="{{ url_for('auth.register') }}" class="link-register">注册</a></p>
+    </form>
+{% endblock %}

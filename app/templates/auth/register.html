@@ -14,7 +14,7 @@
 {% block body_content %}
     <!-- 导入表单生成辅助模板文件form_constructor.html-->
     {% from "auth/form_constructor.html" import render_field %}
-    <h1 class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</h1>
+    <h1 class="brand">Join Q<span class="v" style="color:#0052e6;">v</span>ault</h1>
     <form action="{{ url_for('auth.register') }}" method="post" autocomplete="off" novalidate>
         <!-- Flask-WTF默认开启CSRF保护，添加下面代码以获取CSRF令牌，否则提交表单会报错-->
         {{ form.csrf_token }}

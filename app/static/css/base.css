@@ -34,3 +34,20 @@
     color: #0049cc;
     background-color: transparent;
 }
+
+.modal-header{
+    border-bottom: none;
+}
+
+#modal-dialog {
+    max-width: none;
+    min-width: 450px;
+    width: 32%;
+}
+
+iframe{
+    width:100%;
+    border:none;
+    height: calc(69vh);
+    min-height: 650px;
+}
