@@ -37,17 +37,22 @@
 
 .modal-header{
     border-bottom: none;
+    padding:5px 10px;
+}
+
+.modal-body{
+    padding-top: 0;
 }
 
 #modal-dialog {
     max-width: none;
     min-width: 450px;
-    width: 32%;
+    width: 36%;
 }
 
 iframe{
     width:100%;
     border:none;
-    height: calc(69vh);
-    min-height: 650px;
+    height: 450px;
+    /*min-height: 650px;*/
 }

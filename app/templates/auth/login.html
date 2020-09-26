@@ -10,7 +10,10 @@
 
 {% block body_content %}
     {% from "auth/form_constructor.html" import render_field %}
-    <h1 class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault · </h1>
+    <div class="title-wrap">
+        <p class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</p>
+        <p class="form-name">欢迎回来！</p>
+    </div>
     <form action="{{ url_for('auth.login') }}" method="post" autocomplete="off" novalidate>
         {{ form.csrf_token }}
         {{ render_field(form.account) }}

@@ -1,15 +1,23 @@
 .brand{
     font-family: "Constantia","Candara","Fredericka the Great","Dosis","Book Antiqua", serif;
     font-weight: bolder;
-    margin-top: 0;
-    text-align: center;
-    font-size: 296%;
+    font-size: 24px;
+    margin-bottom: 0;
+    margin-top: 10%;
 }
 
-form{
+.form-name{
+    font-size: 36px;
+    /*font-weight: 900;*/
+    font-family: 微软雅黑, serif;
+    margin-bottom: 0;
+}
+
+form,.title-wrap{
     width:80%;
     min-width: 360px;
-    margin: 30px auto;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 /*选项卡文字水平居中对齐*/
@@ -152,5 +160,5 @@ i{
 }
 
 #account{
-    margin-top: 50px;
+    margin-top: 30px;
 }

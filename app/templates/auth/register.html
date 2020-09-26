@@ -14,7 +14,10 @@
 {% block body_content %}
     <!-- 导入表单生成辅助模板文件form_constructor.html-->
     {% from "auth/form_constructor.html" import render_field %}
-    <h1 class="brand">Join Q<span class="v" style="color:#0052e6;">v</span>ault</h1>
+    <div class="title-wrap">
+        <p class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</p>
+        <p class="form-name">创建账号</p>
+    </div>
     <form action="{{ url_for('auth.register') }}" method="post" autocomplete="off" novalidate>
         <!-- Flask-WTF默认开启CSRF保护，添加下面代码以获取CSRF令牌，否则提交表单会报错-->
         {{ form.csrf_token }}
@@ -46,7 +49,7 @@
         {{ render_field(form.username) }}
         {{ render_field(form.password) }}
         {{ render_field(form.password1) }}
-        <p style="font-size: 16px;margin-left:5px;">已有账号？<a href="#" style="color:#0052e6;">登录</a></p>
+        <p style="font-size: 16px;margin-left:5px;">已有账号？<a href="{{ url_for('auth.login') }}" style="color:#0052e6;">登录</a></p>
         {{ form.submit(class='btn btn-block') }}
     </form>
     <!-- 导入实现前端表单验证功能的js文件-->

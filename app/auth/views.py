@@ -11,7 +11,7 @@ from tencentcloud.sms.v20190711 import sms_client, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 
 from flask import flash
-from .forms import RegistrationForm
+from .forms import RegistrationForm, LoginForm
 from ..import db
 
 @auth.route('/check', methods=['POST'])
@@ -66,3 +66,8 @@ def register():
         flash('您已注册成功！')
         return redirect(url_for('main.index'))
     return render_template('auth/register.html',form=form)
+
+@auth.route('/login', methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    return render_template('auth/login.html', form=form)
