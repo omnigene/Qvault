@@ -9,7 +9,7 @@ class RegistrationForm(FlaskForm):
     email=StringField('',render_kw={'placeholder':'邮箱','type':'email','onfocus':'this.placeholder=""','onblur':'this.placeholder="邮箱"'})
     password=PasswordField('',render_kw={'placeholder':'设置密码','type':'password','onfocus':'this.placeholder=""','onblur':'this.placeholder="设置密码"'})
     password1=PasswordField('',render_kw={'placeholder':'密码确认','type':'password','onfocus':'this.placeholder=""','onblur':'this.placeholder="密码确认"'})
-    submit=SubmitField('注  册')
+    submit=SubmitField('注  册',render_kw={'style':'display:none'})
 
 class LoginForm(FlaskForm):
     account=StringField('',validators=[InputRequired()],render_kw={'placeholder':'手机号/邮箱/用户名','onfocus':'this.placeholder=""','onblur':'this.placeholder="手机号/邮箱/用户名"'})

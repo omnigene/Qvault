@@ -1,9 +1,8 @@
 .brand{
     font-family: "Constantia","Candara","Fredericka the Great","Dosis","Book Antiqua", serif;
     font-weight: bolder;
-    font-size: 24px;
+    font-size: 27px;
     margin-bottom: 0;
-    margin-top: 10%;
 }
 
 .form-name{
@@ -24,27 +23,24 @@ form,.title-wrap{
 #tab-list {
     text-align: center;
     padding-bottom: 10px;
-}
-
-a{
-    height:90%;
+    display: block;
 }
 
 /*改写选项卡的Bootstrap默认样式*/
-#mobile-tab, #email-tab{
-    border-top:none;
-    border-left: none;
-    border-right: none;
-    background-color: transparent;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    color:darkgrey;
-    font-size: 18px;
-}
-#mobile-tab.active, #email-tab.active{
-    border-bottom: 1.5px solid #0052e6;
-    color: #0052e6;
-}
+/*#mobile-tab, #email-tab{*/
+/*    border-top:none;*/
+/*    border-left: none;*/
+/*    border-right: none;*/
+/*    background-color: transparent;*/
+/*    border-bottom-left-radius: 0;*/
+/*    border-bottom-right-radius: 0;*/
+/*    color:darkgrey;*/
+/*    font-size: 18px;*/
+/*}*/
+/*#mobile-tab.active, #email-tab.active{*/
+/*    border-bottom: 1.5px solid #0052e6;*/
+/*    color: #0052e6;*/
+/*}*/
 
 .tab-pane{
     margin-bottom: 18px;
@@ -82,16 +78,42 @@ p {
 }
 
 /*用id定位元素，改写提交按钮的Bootstrap默认样式*/
-#submit{
+#submit, #next{
     background-color: rgba(0,82,230,0.5);
     font-size: 18px;
     color:white;
     font-weight: bold;
+    border-radius: 0.25rem;
+    line-height: 1.5;
+    border:none;
+    padding: .5rem 1.25rem;
 }
 
-#submit:hover{
+#submit:hover, #next:hover{
     background-color: rgb(0,82,230);
     box-shadow:0 0 15px rgba(0,82,230,0.5) ;
+}
+
+#pre{
+    display: none;
+    border:none;
+    background: none;
+    text-align: left;
+    padding: 0 0;
+    margin-bottom: 1rem;
+    margin-left: 5px;
+    width: 100%;
+    font-size: 16px;
+    color: #0052e6;
+}
+
+#pre:hover{
+    text-decoration: underline;
+}
+
+#left-arrow{
+    color: black;
+    font-family: 黑体, serif;
 }
 
 #code{
@@ -159,6 +181,50 @@ i{
     margin-right: 10px;
 }
 
-#account{
+#account,#username, #mobile, #email{
     margin-top: 30px;
+}
+
+body{
+    margin-top: 6%;
+}
+
+ /* Switch开关样式 */
+ /* 必须是input为 checkbox class 添加 switch 才能实现以下效果 */
+ input[type='checkbox'].switch{
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: #0052e6;
+    border-radius: 10px;
+    transition: border-color .3s, background-color .3s;
+}
+
+input[type='checkbox'].switch::after {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height:1rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 2px #999;
+    transition:.4s;
+    top: 2px;
+    position: absolute;
+    left: 2px;
+}
+
+input[type='checkbox'].switch:checked {
+    background: black;
+}
+/* 当input[type=checkbox]被选中时：伪元素显示下面样式 位置发生变化 */
+input[type='checkbox'].switch:checked::after {
+    content: '';
+    position: absolute;
+    left: 55%;
+    top: 2px;
 }

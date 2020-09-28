@@ -142,6 +142,15 @@ $(document).ready(function () {
             captcha1.show();
         }
     });
+    $("#next").click(function () {
+       $("#pre").css('display','inline-block');
+       $("#submit").css('display','block');
+       $(this).css('display','none');
+    });
+    $("#pre").click(function () {
+        $("#pre,#submit").css('display','none');
+        $("#next").css('display','block')
+    });
     $("#submit").click(function () {
         $("input").focus();
         checkRegistered(mobile);
