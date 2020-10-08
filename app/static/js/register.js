@@ -1,4 +1,15 @@
 $(document).ready(function () {
+    // var baseiframe=$('iframe');
+    // console.log(baseiframe[0]);
+    // var ro = new ResizeObserver( entries => {
+    //     reheight=entries[0].contentRect.height+125;
+    //     baseiframe.css("min-height",reheight);
+    //     console.log('iframe高度：'+baseiframe.height());
+    // });
+    // ro.observe(wrapform);
+
+
+
     var errors={
         'mobile':['您还未填写手机号码。','请输入11位有效手机号码，不支持虚拟运营商号段。','该手机号已注册！'],
         'code':['请输入6位注册验证码。','验证码错误！'],
@@ -49,7 +60,7 @@ $(document).ready(function () {
     var checkInput=function (){
         if ($(this).val()==='') {
             addFailedInfo($(this),0);
-            if (this.id==='mobile' || 'email'){
+            if (this.id==='mobile' || this.id==='email'){
                 code.removeAttr("style").val("").removeClass("check-icon").siblings().last().removeClass("errors-icon").empty();
                 $("#code,#send").attr("disabled","true");
             }
@@ -60,7 +71,7 @@ $(document).ready(function () {
         }
         else if (this.id==='password1'? $(this).val()!==password.val():!(patterns[this.id].test($(this).val()))) {
             addFailedInfo($(this),1);
-            if(this.id==='mobile' || 'email'){
+            if(this.id==='mobile' || this.id==='email'){
                 code.removeAttr("style").val("").removeClass("check-icon").siblings().last().removeClass("errors-icon").empty();
                 $("#code,#send").attr("disabled","true");
             }
@@ -71,7 +82,7 @@ $(document).ready(function () {
         }
         else {
             addPassedInfo($(this));
-            if (this.id==='mobile' || 'email') {
+            if (this.id==='mobile'||this.id==='email') {
                  $("#code,#send").removeAttr("disabled");
                 if (code.hasClass("check-icon") && $(this).val()!==mobile_check){
                     addFailedInfo(code,1);
@@ -142,10 +153,18 @@ $(document).ready(function () {
             captcha1.show();
         }
     });
+    var activePanel=($('.tab-pane.active'));
     $("#next").click(function () {
-       $("#pre").css('display','inline-block');
-       $("#submit").css('display','block');
-       $(this).css('display','none');
+        activePanel.find("input").focus();
+        // checkRegistered(username);
+        if (activePanel.find('p').hasClass("errors-icon")){
+            return false;
+        }
+        else {
+            $("#pre").css('display','inline-block');
+            $("#submit").css('display','block');
+            $(this).css('display','none');
+        }
     });
     $("#pre").click(function () {
         $("#pre,#submit").css('display','none');
@@ -155,10 +174,24 @@ $(document).ready(function () {
         $("input").focus();
         checkRegistered(mobile);
         checkRegistered(email);
-        checkRegistered(username);
-        $(".tab-pane.active").siblings().children(":first").children("input").val('').blur().focus();
+        // $(".tab-pane.active").siblings().children(":first").children("input").val('').blur().focus();
         if ($("p").hasClass("errors-icon")){
             return false;
         }
     });
+    $("input[type='checkbox'].switch").change(function () {
+        if ($("input[type='checkbox'].switch").is(":checked")===false){
+            $(".mobile-tag").css("color","#0052e6");
+            $(".email-tag").css("color","lightgray");
+            $(".input-wrap.email").css('display','none');
+            $(".input-wrap.mobile").css('display','');
+        }
+        else{
+            $(".mobile-tag").css("color","lightgray");
+            $(".email-tag").css("color","black");
+            $(".input-wrap.mobile").css('display','none');
+            $(".input-wrap.email").css('display','block');
+        }
+    });
+
 });

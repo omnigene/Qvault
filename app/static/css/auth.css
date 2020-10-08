@@ -1,55 +1,49 @@
+body{
+    margin-top: 6%;
+}
+
+/*标题部分*/
+.title-wrap, form{
+    width:80%;
+    min-width: 360px;
+    max-width: 450px;
+    margin: 0 auto;
+}
 .brand{
     font-family: "Constantia","Candara","Fredericka the Great","Dosis","Book Antiqua", serif;
     font-weight: bolder;
     font-size: 27px;
     margin-bottom: 0;
 }
-
 .form-name{
     font-size: 36px;
-    /*font-weight: 900;*/
     font-family: 微软雅黑, serif;
     margin-bottom: 0;
 }
 
-form,.title-wrap{
-    width:80%;
-    min-width: 360px;
-    max-width: 450px;
-    margin: 0 auto;
+/*弹出信息提示框部分*/
+#alert{
+    margin-bottom: 0;
+    width: 100%;
+    background-color: #0052e6;
+    border: none;
+    color: white;
+}
+i{
+    margin-right: 10px;
 }
 
-/*选项卡文字水平居中对齐*/
-#tab-list {
-    text-align: center;
-    padding-bottom: 10px;
-    display: block;
-}
-
-/*改写选项卡的Bootstrap默认样式*/
-/*#mobile-tab, #email-tab{*/
-/*    border-top:none;*/
-/*    border-left: none;*/
-/*    border-right: none;*/
-/*    background-color: transparent;*/
-/*    border-bottom-left-radius: 0;*/
-/*    border-bottom-right-radius: 0;*/
-/*    color:darkgrey;*/
-/*    font-size: 18px;*/
-/*}*/
-/*#mobile-tab.active, #email-tab.active{*/
-/*    border-bottom: 1.5px solid #0052e6;*/
-/*    color: #0052e6;*/
-/*}*/
-
+/*选项卡页面内容部分*/
 .tab-pane{
     margin-bottom: 18px;
     padding-top: 10px;
 }
-
-/*设置输入框样式*/
-.input-group{
-    margin-bottom: 18px;
+.step{
+    font-size: 20px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+    font-family: 微软雅黑, serif;
+    color: rgba(0,0,0,0.7);
 }
 input.form-control:focus,
 input.form-control:hover{
@@ -57,8 +51,11 @@ input.form-control:hover{
     box-shadow:0 0 15px rgba(0,82,230,0.3) ;
     outline: none;
 }
-
-/*设置输入框输入错误及输入正确的提示的样式*/
+/*各选项卡页面首行输入框样式*/
+#account,#username{
+    margin-top: 30px;
+}
+/*输入框输入提示（正确和错误）的样式*/
 p {
     font-size: 14px;
     background-repeat: no-repeat;
@@ -76,46 +73,7 @@ p {
     background-repeat: no-repeat;
     background-position: right 16px center;
 }
-
-/*用id定位元素，改写提交按钮的Bootstrap默认样式*/
-#submit, #next{
-    background-color: rgba(0,82,230,0.5);
-    font-size: 18px;
-    color:white;
-    font-weight: bold;
-    border-radius: 0.25rem;
-    line-height: 1.5;
-    border:none;
-    padding: .5rem 1.25rem;
-}
-
-#submit:hover, #next:hover{
-    background-color: rgb(0,82,230);
-    box-shadow:0 0 15px rgba(0,82,230,0.5) ;
-}
-
-#pre{
-    display: none;
-    border:none;
-    background: none;
-    text-align: left;
-    padding: 0 0;
-    margin-bottom: 1rem;
-    margin-left: 5px;
-    width: 100%;
-    font-size: 16px;
-    color: #0052e6;
-}
-
-#pre:hover{
-    text-decoration: underline;
-}
-
-#left-arrow{
-    color: black;
-    font-family: 黑体, serif;
-}
-
+/*获取验证码的输入框及按钮样式*/
 #code{
     float:left;width:67%;
     margin-right:3%;
@@ -125,7 +83,6 @@ p {
     border-color: #ced4da;
     cursor: not-allowed;
 }
-
 #send{
     width:100%;
     box-shadow:0 0 15px rgba(0,82,230,0.5) ;
@@ -151,7 +108,6 @@ p {
         opacity: 1;
     }
 }
-
 #send[disabled],#send[disabled]:hover{
     cursor: not-allowed;
     box-shadow: none;
@@ -168,30 +124,14 @@ p {
     background-color: transparent;
     color:#0052e6;
 }
-
-#alert{
-    margin-bottom: 0;
-    width: 100%;
-    background-color: #0052e6;
-    border: none;
-    color: white;
+/* Switch开关样式 */
+/* 必须是input为 checkbox class 添加 switch 才能实现以下效果 */
+.switch-p{
+    text-align:right;
+    margin-bottom: 5px;
+    padding-right: 3px;
 }
-
-i{
-    margin-right: 10px;
-}
-
-#account,#username, #mobile, #email{
-    margin-top: 30px;
-}
-
-body{
-    margin-top: 6%;
-}
-
- /* Switch开关样式 */
- /* 必须是input为 checkbox class 添加 switch 才能实现以下效果 */
- input[type='checkbox'].switch{
+input[type='checkbox'].switch{
     outline: none;
     appearance: none;
     -webkit-appearance: none;
@@ -203,7 +143,6 @@ body{
     border-radius: 10px;
     transition: border-color .3s, background-color .3s;
 }
-
 input[type='checkbox'].switch::after {
     content: '';
     display: inline-block;
@@ -217,14 +156,63 @@ input[type='checkbox'].switch::after {
     position: absolute;
     left: 2px;
 }
-
 input[type='checkbox'].switch:checked {
-    background: black;
+    background: rgba(0,0,0,0.8);
 }
-/* 当input[type=checkbox]被选中时：伪元素显示下面样式 位置发生变化 */
 input[type='checkbox'].switch:checked::after {
     content: '';
     position: absolute;
     left: 55%;
     top: 2px;
+}
+.mobile-tag{
+    color:#0052e6;
+}
+.email-tag{
+    color:lightgray;
+}
+/*默认影藏邮箱验证*/
+.input-wrap.email{
+    display: none;
+}
+
+/*选项卡选项列表部分*/
+/*用id定位元素可改写Bootstrap默认样式*/
+#tab-list {
+    text-align: center;
+    padding-bottom: 10px;
+    display: block;
+}
+#next,#submit{
+    background-color: rgba(0,82,230,0.5);
+    font-size: 18px;
+    color:white;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    line-height: 1.5;
+    border:none;
+    padding: .5rem 1.25rem;
+}
+#next:hover,#submit:hover{
+    background-color: rgb(0,82,230);
+    box-shadow:0 0 15px rgba(0,82,230,0.5) ;
+}
+#pre{
+    display: none;
+    border:none;
+    background: none;
+    text-align: left;
+    padding: 0 0;
+    margin-bottom: 1rem;
+    margin-left: 5px;
+    width: 100%;
+    font-size: 16px;
+    color: #0052e6;
+}
+#pre:hover{
+    text-decoration: underline;
+}
+#left-arrow{
+    color: black;
+    font-family: 黑体, serif;
 }

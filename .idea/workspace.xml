@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ebb5fd6-6d37-4287-881a-a22eb5be131d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/static/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/base.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/auth/form_constructor.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/form_constructor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,14 +20,28 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -39,7 +57,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/PythonCode/JS" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -113,6 +131,18 @@
       <workItem from="1601125372292" duration="1422000" />
       <workItem from="1601169013629" duration="19405000" />
       <workItem from="1601258888640" duration="18466000" />
+      <workItem from="1601300587879" duration="5510000" />
+      <workItem from="1601387107927" duration="625000" />
+      <workItem from="1601467472902" duration="8900000" />
+      <workItem from="1601513642990" duration="1355000" />
+      <workItem from="1601525134851" duration="13081000" />
+      <workItem from="1601598930259" duration="4029000" />
+      <workItem from="1601633348893" duration="8474000" />
+      <workItem from="1601686382419" duration="2145000" />
+      <workItem from="1601976504191" duration="918000" />
+      <workItem from="1601978655477" duration="11617000" />
+      <workItem from="1602116851704" duration="2991000" />
+      <workItem from="1602160889825" duration="9788000" />
     </task>
     <task id="LOCAL-00001" summary="Build project framework">
       <created>1600766206161</created>
@@ -156,11 +186,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="Build project framework" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Qvault$config.coverage" NAME="config Coverage Results" MODIFIED="1600822583442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Qvault$views.coverage" NAME="views Coverage Results" MODIFIED="1600765611767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
     <SUITE FILE_PATH="coverage/Qvault$Flask__app_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1600765557744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1601284328452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Qvault$Qvault.coverage" NAME="Qvault Coverage Results" MODIFIED="1600821101760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1602161435490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py___1_.coverage" NAME="Flask (qvault.py) (1) Coverage Results" MODIFIED="1600822648077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Qvault$config.coverage" NAME="config Coverage Results" MODIFIED="1600822583442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
