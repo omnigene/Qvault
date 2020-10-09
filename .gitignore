@@ -137,4 +137,8 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+<<<<<<< HEAD
 .idea/workspace.xml
+=======
+.idea/workspace.xml
+>>>>>>> ffba5cfb69a656fccc18aaba91cf85fe0985e625
