@@ -1,15 +1,4 @@
 $(document).ready(function () {
-    // var baseiframe=$('iframe');
-    // console.log(baseiframe[0]);
-    // var ro = new ResizeObserver( entries => {
-    //     reheight=entries[0].contentRect.height+125;
-    //     baseiframe.css("min-height",reheight);
-    //     console.log('iframe高度：'+baseiframe.height());
-    // });
-    // ro.observe(wrapform);
-
-
-
     var errors={
         'mobile':['您还未填写手机号码。','请输入11位有效手机号码，不支持虚拟运营商号段。','该手机号已注册！'],
         'code':['请输入6位注册验证码。','验证码错误！'],

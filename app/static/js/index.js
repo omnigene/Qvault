@@ -1,11 +1,14 @@
 $(function () {
-    var mainframe=$("#mainframe");
     $('#login-btn').click(function () {
+        var mainframe=$("#mainframe");
         mainframe.attr("src","/login");
-        var i=document.getElementById("mainframe");
-        i.onload=function(){
-            console.log(i.contentDocument);
-            console.log(i.contentDocument.getElementById("wrapform").scrollHeight);
+        mainframe[0].onload=function () {
+            var framebody=mainframe[0].contentDocument.body;
+            var ro = new ResizeObserver( entries => {
+                reheight=entries[0].contentRect.height+65;
+                $(this).attr("height",reheight);
+            });
+            ro.observe(framebody);
         };
     });
 });
