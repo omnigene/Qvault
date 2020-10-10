@@ -8,13 +8,12 @@
 }
 
 #modal-dialog {
-    max-width: none;
+    max-width: 33%;
     min-width: 450px;
-    width: 36%;
 }
 
 #mainframe{
     width:100%;
     border:none;
-    min-height: 452px;
+    min-height: 520px;
 }

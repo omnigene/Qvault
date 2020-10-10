@@ -1,3 +1,10 @@
+// 阻止按回车键提交表单
+$(document).keydown(function (event) {
+    if (event.which === 13) {
+        return false;
+    }
+});
+
 $(document).ready(function () {
     var errors={
         'mobile':['您还未填写手机号码。','请输入11位有效手机号码，不支持虚拟运营商号段。','该手机号已注册！'],
@@ -142,7 +149,7 @@ $(document).ready(function () {
             captcha1.show();
         }
     });
-    var activePanel=($('.tab-pane.active'));
+    var activePanel=$('.tab-pane.active');
     $("#next").click(function () {
         activePanel.find("input").focus();
         // checkRegistered(username);
@@ -174,13 +181,26 @@ $(document).ready(function () {
             $(".email-tag").css("color","lightgray");
             $(".input-wrap.email").css('display','none');
             $(".input-wrap.mobile").css('display','');
+            if (mobile.hasClass("check-icon")){
+                console.log("选择手机：状态"+mobile.hasClass("check-icon"));
+                $("#code,#send").removeAttr("disabled");
+            }else{
+                console.log("选择手机：状态"+mobile.hasClass("check-icon"));
+                $("#code,#send").attr("disabled","true");
+            }
         }
         else{
             $(".mobile-tag").css("color","lightgray");
             $(".email-tag").css("color","black");
             $(".input-wrap.mobile").css('display','none');
             $(".input-wrap.email").css('display','block');
+            if (email.hasClass("check-icon")){
+                console.log("选择邮件：状态"+email.hasClass("check-icon"));
+                $("#code,#send").removeAttr("disabled");
+            }else{
+                console.log("选择邮件：状态"+email.hasClass("check-icon"));
+                $("#code,#send").attr("disabled","true");
+            }
         }
     });
-
 });

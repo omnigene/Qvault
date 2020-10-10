@@ -39,12 +39,13 @@ i{
     padding-top: 10px;
 }
 .step{
-    font-size: 20px;
+    font-size: 1.1rem;
     margin-left: 5px;
     margin-bottom: 3px;
     font-family: 微软雅黑, serif;
     color: rgba(0,0,0,0.7);
 }
+
 input.form-control:focus,
 input.form-control:hover{
     border:1px solid #0052e6;
@@ -57,7 +58,7 @@ input.form-control:hover{
 }
 /*输入框输入提示（正确和错误）的样式*/
 p {
-    font-size: 14px;
+    font-size: 0.8rem;
     background-repeat: no-repeat;
     background-position-y: 1.8px;
 }
@@ -73,9 +74,11 @@ p {
     background-repeat: no-repeat;
     background-position: right 16px center;
 }
+
 /*获取验证码的输入框及按钮样式*/
 #code{
-    float:left;width:67%;
+    float:left;
+    width: 67%;
     margin-right:3%;
 }
 #code[disabled],#code[disabled]:hover{
@@ -84,7 +87,7 @@ p {
     cursor: not-allowed;
 }
 #send{
-    width:100%;
+    width: 100%;
     box-shadow:0 0 15px rgba(0,82,230,0.5) ;
     color: #0052e6;
     border: solid 1px;
@@ -137,8 +140,8 @@ input[type='checkbox'].switch{
     -webkit-appearance: none;
     -moz-appearance: none;
     position: relative;
-    width: 40px;
-    height: 20px;
+    width: 2rem;
+    height: 1rem;
     background: #0052e6;
     border-radius: 10px;
     transition: border-color .3s, background-color .3s;
@@ -146,8 +149,8 @@ input[type='checkbox'].switch{
 input[type='checkbox'].switch::after {
     content: '';
     display: inline-block;
-    width: 1rem;
-    height:1rem;
+    width: 0.8rem;
+    height:0.8rem;
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 0 2px #999;
@@ -185,7 +188,7 @@ input[type='checkbox'].switch:checked::after {
 }
 #next,#submit{
     background-color: rgba(0,82,230,0.5);
-    font-size: 18px;
+    font-size: 1rem;
     color:white;
     font-weight: bold;
     border-radius: 0.25rem;
@@ -206,13 +209,21 @@ input[type='checkbox'].switch:checked::after {
     margin-bottom: 1rem;
     margin-left: 5px;
     width: 100%;
-    font-size: 16px;
+    font-size: 1rem;
     color: #0052e6;
 }
-#pre:hover{
+
+#pre-text:hover{
     text-decoration: underline;
+    font-weight: normal;
 }
+
 #left-arrow{
     color: black;
     font-family: 黑体, serif;
+}
+
+.link-to{
+    font-size: 1rem;
+    margin-left: 5px;
 }
