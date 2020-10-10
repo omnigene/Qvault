@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ebb5fd6-6d37-4287-881a-a22eb5be131d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/static/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/base.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/auth/form_constructor.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/form_constructor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="0ebb5fd6-6d37-4287-881a-a22eb5be131d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +131,7 @@
       <workItem from="1601978655477" duration="11617000" />
       <workItem from="1602116851704" duration="2991000" />
       <workItem from="1602160889825" duration="9788000" />
+      <workItem from="1602333601518" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="Build project framework">
       <created>1600766206161</created>
