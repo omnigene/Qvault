@@ -47,7 +47,7 @@ def send_message():
         req.TemplateID = "664214"
         req.TemplateParamSet = [make_code(6)]
         resp = client.SendSms(req)
-        verify_data={'mobile':mobile,'code':req.TemplateParamSet[0]}
+        verify_data={'mobile':mobile,'code':req.TemplateParamSet[0],'msg':'注册验证码已发送。'}
         return verify_data, 200
     except TencentCloudSDKException as err:
         print('error', err)

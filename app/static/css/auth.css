@@ -141,7 +141,7 @@ input[type='checkbox'].switch{
     -moz-appearance: none;
     position: relative;
     width: 2rem;
-    height: 1rem;
+    height: 1.05rem;
     background: #0052e6;
     border-radius: 10px;
     transition: border-color .3s, background-color .3s;

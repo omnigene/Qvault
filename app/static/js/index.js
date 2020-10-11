@@ -6,11 +6,11 @@ $(function () {
         mainFrame.on('load',function () {
             var toRegister=mainFrame.contents().find("#to-register");
             toRegister.click(function () {
-                mainFrame.attr("height","568px");
+                mainFrame.attr("height","480px");
             });
             var frameBody=mainFrame.contents().find("body")[0];
             var ro = new ResizeObserver( entries => {
-                resizeHeight=entries[0].contentRect.height+90;
+                resizeHeight=entries[0].contentRect.height+66;
                 $(this).attr("height",resizeHeight);
             });
             ro.observe(frameBody);

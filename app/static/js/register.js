@@ -32,7 +32,7 @@ $(document).ready(function () {
         el.css({"border-color":"red","box-shadow":"0 0 15px rgba(255,0,0,0.3)"});
     }
     function checkRegistered(el){
-        if (el.hasClass("check-icon")) {
+        // if (el.hasClass("check-icon")) {
             var data= JSON.stringify({[el.attr('id')]: el.val()});
             var register_tof;
             $.ajax({
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 }
             });
             return register_tof;
-        }
+        // }
     }
     var [email,mobile,code,username,password,password1]=[$('#email'),$('#mobile'),$('#code'),$('#username'),$('#password'),$('#password1')];
     var mobile_check;
@@ -152,7 +152,7 @@ $(document).ready(function () {
     var activePanel=$('.tab-pane.active');
     $("#next").click(function () {
         activePanel.find("input").focus();
-        // checkRegistered(username);
+        checkRegistered(username);
         if (activePanel.find('p').hasClass("errors-icon")){
             return false;
         }
@@ -170,37 +170,32 @@ $(document).ready(function () {
         $("input").focus();
         checkRegistered(mobile);
         checkRegistered(email);
-        // $(".tab-pane.active").siblings().children(":first").children("input").val('').blur().focus();
+        activePanel.siblings().children(":first").children("input").val('').blur().focus();
         if ($("p").hasClass("errors-icon")){
             return false;
         }
     });
+    function switchEvent(el) {
+        if (el.hasClass("check-icon")){
+            $("#code,#send").removeAttr("disabled");
+        } else {
+            $("#code,#send").attr("disabled","true");
+        }
+    }
     $("input[type='checkbox'].switch").change(function () {
         if ($("input[type='checkbox'].switch").is(":checked")===false){
             $(".mobile-tag").css("color","#0052e6");
             $(".email-tag").css("color","lightgray");
             $(".input-wrap.email").css('display','none');
             $(".input-wrap.mobile").css('display','');
-            if (mobile.hasClass("check-icon")){
-                console.log("选择手机：状态"+mobile.hasClass("check-icon"));
-                $("#code,#send").removeAttr("disabled");
-            }else{
-                console.log("选择手机：状态"+mobile.hasClass("check-icon"));
-                $("#code,#send").attr("disabled","true");
-            }
+            switchEvent(mobile);
         }
         else{
             $(".mobile-tag").css("color","lightgray");
             $(".email-tag").css("color","black");
             $(".input-wrap.mobile").css('display','none');
             $(".input-wrap.email").css('display','block');
-            if (email.hasClass("check-icon")){
-                console.log("选择邮件：状态"+email.hasClass("check-icon"));
-                $("#code,#send").removeAttr("disabled");
-            }else{
-                console.log("选择邮件：状态"+email.hasClass("check-icon"));
-                $("#code,#send").attr("disabled","true");
-            }
+            switchEvent(email);
         }
     });
 });
