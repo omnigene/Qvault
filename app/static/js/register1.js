@@ -6,6 +6,9 @@ $(document).keydown(function (event) {
 });
 
 $(document).ready(function () {
+    var [username,password,password1]=[$('#username'),$('#password'),$('#password1')];
+    var [mobile,email,code]=[$('#mobile'),$('#email'),$('#code')];
+    // 错误提示与格式规范字典
     var errors={
         'mobile':['您还未填写手机号码。','请输入11位有效手机号码，不支持虚拟运营商号段。','该手机号已注册！'],
         'code':['请输入6位注册验证码。','验证码错误！'],
@@ -19,90 +22,95 @@ $(document).ready(function () {
         'code':/^$/,
         'email':/^[a-zA-Z\d\\._-]+@[a-zA-Z\d._-]+\.[a-zA-Z]+$/,
         'username':/^(?![._-])[\w\u4E00-\u9FA5._-]{1,15}[a-zA-Z\d\u4E00-\u9FA5]{1}$/,
-        'password':/^[\w]{6,18}$/,
+        'password':/^[\w]{6,18}$/
     };
+    // 添加检查通过样式
     function addPassedInfo(el) {
         el.siblings().last().removeClass("errors-icon").empty();
         el.addClass("check-icon");
         el.css({"border-color":"green","box-shadow":"0 0 15px rgba(0,128,0,0.3)"});
     }
+    // 添加检查未通过样式
     function addFailedInfo(el,n) {
         el.removeClass("check-icon");
         el.siblings().last().attr("class","errors").addClass("errors-icon").html(errors[el.attr('id')][parseInt(n)]);
         el.css({"border-color":"red","box-shadow":"0 0 15px rgba(255,0,0,0.3)"});
     }
-    // 检查是否已注册
-    function checkRegistered(el){
-        // 检查是否已注册前，先检查输入是否符合规则
-        if (el.hasClass("check-icon")) {
-            var data= JSON.stringify({[el.attr('id')]: el.val()});
-            var register_tof;
-            console.log('before:'+register_tof);
-            $.ajax({
-                url: "/check",
-                type: "POST",
-                contentType: "application/json;charset=UTF-8",
-                data: data,
-                async: false,
-                success: tof=> {
-                    if (tof==='false'){
-                        addFailedInfo(el,2);
-                        register_tof=false;
-                    }
-                    else { register_tof=true; }
-                }
-            });
-            console.log('after:'+register_tof);
-            return register_tof;
+    // 启用与禁用验证码输入框及发送按钮
+    function switchSend(el){
+        if (checkPatterns(el) && checkRegister(el)){
+            addPassedInfo(el);
+            $('#send, #code').removeAttr('disabled');
+        } else {
+            code.removeAttr("style").val("").removeClass("check-icon").siblings().last().removeClass("errors-icon").empty();
+            $("#code,#send").attr("disabled", "true");
         }
     }
-    var [email,mobile,code,username,password,password1]=[$('#email'),$('#mobile'),$('#code'),$('#username'),$('#password'),$('#password1')];
-    var mobile_check;
+    // 格式输入检查是否合法
+    function checkPatterns(el) {
+        if (el.val()===''){
+            addFailedInfo(el,0);
+            return false;
+        }
+        else if (!(patterns[el[0].id].test(el.val()))){
+            addFailedInfo(el,1);
+            return false;
+        }
+        else {return true;}
+    }
+    // 密码一致性检查
+    function checkPassword(el,pwd) {
+        if (pwd!=='' && el.val()!==pwd){
+            addFailedInfo(password1,1);
+            return false;
+        }else if (pwd!=='' && el.val()===pwd){
+            addPassedInfo(password1);
+        }
+    }
+    // 检查输入值在数据库中是否已存在
+    function checkRegister(el){
+        var data= JSON.stringify({[el.attr('id')]: el.val()});
+        var verify_tof=false;
+        $.ajax({
+            url: "/check",
+            type: "POST",
+            contentType: "application/json;charset=UTF-8",
+            data: data,
+            async: false,
+            success: tof=> {
+                if (tof==='false'){
+                    addFailedInfo(el,2);
+                }
+                else {verify_tof=true}
+            }
+        });
+        return verify_tof;
+    }
+    // 输入框响应功能
     var checkInput=function (){
-        if ($(this).val()==='') {
-            addFailedInfo($(this),0);
-            if (this.id==='mobile' || this.id==='email'){
-                code.removeAttr("style").val("").removeClass("check-icon").siblings().last().removeClass("errors-icon").empty();
-                $("#code,#send").attr("disabled","true");
+        if (this.id==='username' && checkPatterns(username) && checkRegister(username)){
+            addPassedInfo(username);
+        } else if (this.id==='password' && checkPatterns(password)){
+            addPassedInfo(password);
+            checkPassword(password, password1.val());
+        } else if (this.id==='password1' && checkPassword(password1,password.val())){
+            addPassedInfo(password1);
+        } else if (this.id==='mobile'){
+            switchSend(mobile);
+            // 防止验证码通过后修改手机号码
+            if ( mobile.hasClass('check-icon') && code.hasClass('check-icon') && mobile.val()!==mobile_num){
+                addFailedInfo(code,1);
+            } else if (mobile.val()===mobile_num && checkPatterns(code)){
+                addPassedInfo(code);
             }
-            if (this.id==='password' && password1.val()!==''){
-                password1.val("");
-                password1.removeClass("check-icon").removeAttr("style");
-            }
-        }
-        else if (this.id==='password1'? $(this).val()!==password.val():!(patterns[this.id].test($(this).val()))) {
-            addFailedInfo($(this),1);
-            if(this.id==='mobile' || this.id==='email'){
-                code.removeAttr("style").val("").removeClass("check-icon").siblings().last().removeClass("errors-icon").empty();
-                $("#code,#send").attr("disabled","true");
-            }
-            if (this.id==='password' && password1.val()!==''){
-                password1.val("");
-                password1.removeClass("check-icon").removeAttr("style");
-            }
-        }
-        else {
-            addPassedInfo($(this));
-            if (this.id==='mobile'||this.id==='email') {
-                 $("#code,#send").removeAttr("disabled");
-                if (code.hasClass("check-icon") && $(this).val()!==mobile_check){
-                    addFailedInfo(code,1);
-                }
-                if (patterns["code"].test(code.val()) && $(this).val()===mobile_check){
-                    addPassedInfo(code);
-                }
-            }
-            if (this.id==='password' && password1.val()!==''){
-                if ($(this).val()!==password1.val()) {
-                    addFailedInfo(password1,1);
-                }
-                else {
-                    addPassedInfo(password1);
-                }
-            }
+        } else if (this.id==='email'){
+            switchSend(email);
+        } else if (this.id==='code' && checkPatterns(code)){
+            addPassedInfo(code);
         }
     };
-    $("#email,#mobile,#code,#username,#password,#password1").on({
+    // 绑定输入框事件
+    $("#username,#password,#password1,#email,#mobile,#code").on({
         focus: function () {
             if ($(this).val()==='') {
                 $(this).siblings().last().removeClass("errors-icon").empty();
@@ -112,25 +120,26 @@ $(document).ready(function () {
         blur: checkInput,
         input: checkInput
     });
-    $("#send").click(function () {
-        if (checkRegistered(mobile)) {
+    // 发送验证码功能
+    var [send,alert]=[$("#send"),$("#alert")];
+    var mobile_num;
+    send.click(function () {
+        if (checkRegister(mobile)) {
             var captcha1 = new TencentCaptcha('2037396490', function (res) {
                 if (res.ret === 0) {
                     code.focus();
                     var count = 60;
-                    var send = $("#send");
                     var interval = setInterval(function f() {
                         send.attr("disabled", true);
                         send.text("重发(" + count + "s)");
                         if (count === 0) {
                             clearInterval(interval);
-                            send.text("获取验证码").removeAttr("disabled");
+                            send.text("发送").removeAttr("disabled");
                         }
                         count--;
                         return f
                     }(), 1000);
                     var mobile_data = JSON.stringify({"mobile": mobile.val()});
-                    var alert=$("#alert");
                     $.ajax({
                         url: "/sms",
                         type: "POST",
@@ -145,8 +154,7 @@ $(document).ready(function () {
                             },5000);
                             patterns['code'] = RegExp('^' + verify_data['code'] + '$');
                             console.log(patterns['code']);
-                            mobile_check = verify_data['mobile'];
-                            console.log(mobile_check);
+                            mobile_num = verify_data['mobile'];
                         }
                     });
                 }
@@ -157,25 +165,25 @@ $(document).ready(function () {
     // 分步注册功能
     var activePanel=$('.tab-pane.active');
     $("#next").click(function () {
-        activePanel.find("input").focus();
-        checkRegistered(username);
+        activePanel.find("input").focus().blur();
+        console.log(activePanel.find("input"));
         if (activePanel.find('p').hasClass("errors-icon")){
             return false;
         }
         else {
             $("#pre").css('display','inline-block');
-            $("#submit").css('display','block');
+            $("#send").css('display','block');
             $(this).css('display','none');
         }
     });
     $("#pre").click(function () {
-        $("#pre,#submit").css('display','none');
+        $("#pre,#send").css('display','none');
         $("#next").css('display','block')
     });
     $("#submit").click(function () {
         $("input").focus();
-        checkRegistered(mobile);
-        checkRegistered(email);
+        checkRegister(mobile);
+        checkRegister(email);
         activePanel.siblings().children(":first").children("input").val('').blur().focus();
         if ($("p").hasClass("errors-icon")){
             return false;
@@ -195,14 +203,14 @@ $(document).ready(function () {
             $(".email-tag").css("color","lightgray");
             $(".input-wrap.email").css('display','none');
             $(".input-wrap.mobile").css('display','');
-            switchEvent(mobile);
+            switchSend(mobile);
         }
         else{
             $(".mobile-tag").css("color","lightgray");
             $(".email-tag").css("color","black");
             $(".input-wrap.mobile").css('display','none');
             $(".input-wrap.email").css('display','block');
-            switchEvent(email);
+            switchSend(email);
         }
     });
 });

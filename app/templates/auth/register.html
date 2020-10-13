@@ -25,7 +25,7 @@
             <!-- Flask-WTF默认开启CSRF保护，添加下面代码以获取CSRF令牌，否则提交表单会报错-->
             {{ form.csrf_token }}
             <!-- 消息提示框（提示验证码短信已成功发送），默认不显示-->
-            <div id="alert" class="alert alert-primary" role="alert" style="display: none;">
+            <div id="alert" class="alert alert-primary" role="alert">
                 <span></span>
             </div>
             <div class="tab-content">
@@ -41,22 +41,23 @@
                     <p class="switch-p"><input type="checkbox" class="switch"></p>
                     {{ render_field(form.mobile) }}
                     {{ render_field(form.email) }}
-                    <div class="input-wrap">
-                        <input type="text" class="form-control" id="code" placeholder="验证码" onfocus="this.placeholder=''" onblur="this.placeholder='验证码'" disabled>
-                        <div class="input-group-append">
-                            <button class="btn" type="button" id="send" data-appid="appId" data-cbfn="callback" disabled>发送</button>
-                        </div>
-                        <p></p>
-                    </div>
+{#                    <div class="input-wrap">#}
+{#                        <input type="text" class="form-control" id="code" placeholder="验证码" onfocus="this.placeholder=''" onblur="this.placeholder='验证码'" disabled>#}
+{#                        <div class="input-group-append">#}
+{#                            <button class="btn" type="button" id="send" data-appid="appId" data-cbfn="callback" disabled>发送</button>#}
+{#                        </div>#}
+{#                        <p></p>#}
+{#                    </div>#}
                 </div>
             </div>
             <div id="tab-list" class="list-group list-group-horizontal" role="tablist">
                 <a class="list-group-item list-group-item-action" id="next" data-toggle="list" href="#second-step" role="tab">下一步</a>
                 <a class="list-group-item list-group-item-action" id="pre" data-toggle="list" href="#first-step" role="tab"><span id="left-arrow"><< </span><span id="pre-text"> 返回上一步</span></a>
-                {{ form.submit(class='btn btn-block') }}
+                <button class="btn" type="button" id="send" data-appid="appId" data-cbfn="callback" disabled>发送验证码</button>
+{#                {{ form.submit(class='btn btn-block') }}#}
             </div>
         </form>
     </div>
     <!-- 导入实现前端表单验证功能的js文件-->
-    <script src="{{ url_for('static',filename='js/register.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/register1.js') }}"></script>
 {% endblock %}

@@ -34,7 +34,7 @@ def send_message():
             code += str(random.randint(0, 9))
         return code
     try:
-        # 需注册腾讯云账户，获取账户密钥对SecretId和SecretKey，建议在环境变量中设置，这里设置为从项目配置文件config.py中获取
+        # 需注册腾讯云账户，获取账户密钥对SecretId和SecretKey
         cred = credential.Credential(Config.SMS_SECRET_ID, Config.SMS_SECRET_KEY)
         clientProfile = ClientProfile()
         client = sms_client.SmsClient(cred, "ap-guangzhou", clientProfile)
