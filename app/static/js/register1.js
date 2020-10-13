@@ -6,7 +6,7 @@ $(document).keydown(function (event) {
 });
 
 $(document).ready(function () {
-    var [username,password,password1]=[$('#username'),$('#password'),$('#password1')];
+    var [username,pwd,pwd1]=[$('#username'),$('#password'),$('#password1')];
     var [mobile,email,code]=[$('#mobile'),$('#email'),$('#code')];
     // 错误提示与格式规范字典
     var errors={
@@ -58,13 +58,23 @@ $(document).ready(function () {
         }
         else {return true;}
     }
-    // 密码一致性检查
-    function checkPassword(el,pwd) {
-        if (pwd!=='' && el.val()!==pwd){
-            addFailedInfo(password1,1);
-            return false;
-        }else if (pwd!=='' && el.val()===pwd){
-            addPassedInfo(password1);
+    // 密码一致性检查`
+    function checkPassword() {
+        if (checkPatterns(pwd)){
+            addPassedInfo(pwd);
+            if (pwd1.val()!==''&&pwd1.val()!==pwd.val()){
+                addFailedInfo(pwd1,1);
+            }
+        }else{
+            if (pwd1.val()!=='' && pwd1.val()!==pwd.val()){
+                addFailedInfo(pwd1,1);
+            }
+        }
+        if (pwd1.val()==='' && pwd1.is(':focus')){
+            addFailedInfo(pwd1,0);
+        }
+        if (pwd.val()!==''&&pwd1.val()===pwd.val()){
+            addPassedInfo(pwd1);
         }
     }
     // 检查输入值在数据库中是否已存在
@@ -90,11 +100,8 @@ $(document).ready(function () {
     var checkInput=function (){
         if (this.id==='username' && checkPatterns(username) && checkRegister(username)){
             addPassedInfo(username);
-        } else if (this.id==='password' && checkPatterns(password)){
-            addPassedInfo(password);
-            checkPassword(password, password1.val());
-        } else if (this.id==='password1' && checkPassword(password1,password.val())){
-            addPassedInfo(password1);
+        } else if (this.id==='password' || this.id==='password1'){
+            checkPassword();
         } else if (this.id==='mobile'){
             switchSend(mobile);
             // 防止验证码通过后修改手机号码
@@ -164,23 +171,24 @@ $(document).ready(function () {
     });
     // 分步注册功能
     var activePanel=$('.tab-pane.active');
-    $("#next").click(function () {
+    var [next,pre,submit]=[$('#next'),$('#pre'),$('#submit')];
+    next.click(function () {
         activePanel.find("input").focus().blur();
-        console.log(activePanel.find("input"));
         if (activePanel.find('p').hasClass("errors-icon")){
             return false;
         }
         else {
-            $("#pre").css('display','inline-block');
-            $("#send").css('display','block');
+            pre.css('display','inline-block');
+            send.css('display','block');
+            submit.css('display','block');
             $(this).css('display','none');
         }
     });
-    $("#pre").click(function () {
+    pre.click(function () {
         $("#pre,#send").css('display','none');
-        $("#next").css('display','block')
+        next.css('display','block')
     });
-    $("#submit").click(function () {
+    submit.click(function () {
         $("input").focus();
         checkRegister(mobile);
         checkRegister(email);
