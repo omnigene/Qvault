@@ -105,9 +105,9 @@ $(document).ready(function () {
         } else if (this.id==='mobile'){
             switchSend(mobile);
             // 防止验证码通过后修改手机号码
-            if ( mobile.hasClass('check-icon') && code.hasClass('check-icon') && mobile.val()!==mobile_num){
+            if ( mobile.hasClass('check-icon') && code.hasClass('check-icon') && mobile.val()!==check_str){
                 addFailedInfo(code,1);
-            } else if (mobile.val()===mobile_num && checkPatterns(code)){
+            } else if (mobile.val()===check_str && checkPatterns(code)){
                 addPassedInfo(code);
             }
         } else if (this.id==='email'){
@@ -127,49 +127,7 @@ $(document).ready(function () {
         blur: checkInput,
         input: checkInput
     });
-    // 发送验证码功能
-    var [send,alert]=[$("#send"),$("#alert")];
-    var mobile_num;
-    send.click(function () {
-        if (checkRegister(mobile)) {
-            var captcha1 = new TencentCaptcha('2037396490', function (res) {
-                if (res.ret === 0) {
-                    code.focus();
-                    var count = 60;
-                    var interval = setInterval(function f() {
-                        send.attr("disabled", true);
-                        send.text("重发(" + count + "s)");
-                        if (count === 0) {
-                            clearInterval(interval);
-                            send.text("发送").removeAttr("disabled");
-                        }
-                        count--;
-                        return f
-                    }(), 1000);
-                    var mobile_data = JSON.stringify({"mobile": mobile.val()});
-                    $.ajax({
-                        url: "/sms",
-                        type: "POST",
-                        contentType: "application/json;charset=UTF-8",
-                        data: mobile_data,
-                        async:false,
-                        success: function (verify_data) {
-                            alert.children().html('<i class="fas fa-sms"></i>'+verify_data['msg']);
-                            alert.slideDown("slow");
-                            setTimeout(function () {
-                                alert.slideUp("slow");
-                            },5000);
-                            patterns['code'] = RegExp('^' + verify_data['code'] + '$');
-                            console.log(patterns['code']);
-                            mobile_num = verify_data['mobile'];
-                        }
-                    });
-                }
-            });
-            captcha1.show();
-        }
-    });
-    // 分步注册功能
+    // 分步注册切换
     var activePanel=$('.tab-pane.active');
     var [next,pre,submit]=[$('#next'),$('#pre'),$('#submit')];
     next.click(function () {
@@ -178,39 +136,74 @@ $(document).ready(function () {
             return false;
         }
         else {
-            pre.css('display','inline-block');
-            send.css('display','block');
-            submit.css('display','block');
+            $("#pre,#send,#submit").css('display','block');
             $(this).css('display','none');
         }
     });
     pre.click(function () {
-        $("#pre,#send").css('display','none');
+        $("#pre,#send,#submit").css('display','none');
         next.css('display','block')
     });
-    submit.click(function () {
-        $("input").focus();
-        checkRegister(mobile);
-        checkRegister(email);
-        activePanel.siblings().children(":first").children("input").val('').blur().focus();
-        if ($("p").hasClass("errors-icon")){
-            return false;
-        }
-    });
-    // 手机或邮箱注册切换功能
-    function switchEvent(el) {
-        if (el.hasClass("check-icon")){
-            $("#code,#send").removeAttr("disabled");
-        } else {
-            $("#code,#send").attr("disabled","true");
-        }
+    // 发送验证码功能
+    var [send,alert]=[$("#send"),$("#alert")];
+    var check_str;
+    function sendCode(el){
+        var el_data=JSON.stringify({[el.attr('id')]: el.val()});
+        var url=(el[0].id==='mobile')?"/sms":"/smail";
+        var icon_str=(el[0].id==='mobile')?'<i class="fas fa-sms"></i>':'<i class="fas fa-envelope"></i>';
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/json;charset=UTF-8",
+            data: el_data,
+            async:false,
+            success: function (verify_data) {
+                alert.children().html(icon_str+verify_data['msg']);
+                alert.slideDown("slow");
+                setTimeout(function () {
+                    alert.slideUp("slow");
+                },5000);
+                patterns['code'] = RegExp('^' + verify_data['code'] + '$');
+                console.log(patterns['code']);
+                check_str= verify_data['mobile'] || verify_data['email'];
+            }
+        });
     }
+    // 图形滑块验证功能
+    function slideCaptcha(el){
+        var captcha1 = new TencentCaptcha('2037396490', function (res) {
+            if (res.ret === 0) {
+                code.focus();
+                var count = 60;
+                var interval = setInterval(function f() {
+                    send.attr("disabled", true);
+                    send.text("重发(" + count + "s)");
+                    if (count === 0) {
+                        clearInterval(interval);
+                        send.text("发送").removeAttr("disabled");
+                    }
+                    count--;
+                    return f
+                }(), 1000);
+                sendCode(el);
+            }
+        });
+        captcha1.show();
+    }
+    // 发送按钮点击事件
+    send.click(function () {
+        if ($(".input-wrap.mobile").css('display')==='block') {
+            slideCaptcha(mobile);}
+        else{
+            slideCaptcha(email);}
+    });
+
     $("input[type='checkbox'].switch").change(function () {
         if ($("input[type='checkbox'].switch").is(":checked")===false){
             $(".mobile-tag").css("color","#0052e6");
             $(".email-tag").css("color","lightgray");
             $(".input-wrap.email").css('display','none');
-            $(".input-wrap.mobile").css('display','');
+            $(".input-wrap.mobile").css('display','block');
             switchSend(mobile);
         }
         else{
@@ -219,6 +212,13 @@ $(document).ready(function () {
             $(".input-wrap.mobile").css('display','none');
             $(".input-wrap.email").css('display','block');
             switchSend(email);
+        }
+    });
+    submit.click(function () {
+        $("input").focus();
+        activePanel.siblings().children(":first").children("input").val('').blur().focus();
+        if ($("p").hasClass("errors-icon")){
+            return false;
         }
     });
 });
