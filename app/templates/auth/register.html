@@ -37,7 +37,7 @@
                     <p class="link-to">已有账号？<a href="{{ url_for('auth.login') }}" style="color:#0052e6;">登录</a></p>
                 </div>
                 <div class="tab-pane" id="second-step" role="tabpanel">
-                    <p class="step">第2步：验证账户「<span class="mobile-tag">手机</span>丨<span class="email-tag">邮箱</span>」</p>
+                    <p class="step">第2步：验证账户「<span class="tag mobile">手机</span>丨<span class="tag email">邮箱</span>」</p>
                     <p class="switch-p"><input type="checkbox" class="switch"></p>
                     {{ render_field(form.mobile) }}
                     {{ render_field(form.email) }}
@@ -58,5 +58,5 @@
         </form>
     </div>
     <!-- 导入实现前端表单验证功能的js文件-->
-    <script src="{{ url_for('static',filename='js/register1.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/register.js') }}"></script>
 {% endblock %}

@@ -6,12 +6,12 @@ $(function () {
         mainFrame.on('load',function () {
             var toRegister=mainFrame.contents().find("#to-register");
             toRegister.click(function () {
-                mainFrame.css("height","550px");
+                mainFrame.css("height", Math.round(screen.height*0.59));
             });
             var frameBody=mainFrame.contents().find("body")[0];
             var ro = new ResizeObserver( entries => {
-                resizeHeight=entries[0].contentRect.height+72;
-                $(this).css("height",resizeHeight);
+                resizeHeight=Math.round(entries[0].contentRect.height+72);
+                mainFrame.css("height",resizeHeight);
             });
             ro.observe(frameBody);
         })
