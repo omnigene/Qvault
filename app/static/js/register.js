@@ -96,6 +96,14 @@ $(document).ready(function () {
         });
         return verify_tof;
     }
+    // 验证码与手机号或邮箱地址一致性检查
+    function checkCode(el){
+        if ( el.hasClass('check-icon') && code.hasClass('check-icon') && el.val()!==check_str){
+            addFailedInfo(code,1);
+        } else if (el.val()===check_str && checkPatterns(code)){
+            addPassedInfo(code);
+        }
+    }
     // 输入框响应功能
     var checkInput=function (){
         if (this.id==='username' && checkPatterns(username) && checkRegister(username)){
@@ -104,14 +112,10 @@ $(document).ready(function () {
             checkPassword();
         } else if (this.id==='mobile'){
             switchSend(mobile);
-            // 防止验证码通过后修改手机号码
-            if ( mobile.hasClass('check-icon') && code.hasClass('check-icon') && mobile.val()!==check_str){
-                addFailedInfo(code,1);
-            } else if (mobile.val()===check_str && checkPatterns(code)){
-                addPassedInfo(code);
-            }
+            checkCode(mobile);
         } else if (this.id==='email'){
             switchSend(email);
+            checkCode(email);
         } else if (this.id==='code' && checkPatterns(code)){
             addPassedInfo(code);
         }
@@ -149,7 +153,7 @@ $(document).ready(function () {
     var check_str;
     function sendCode(el){
         var el_data=JSON.stringify({[el.attr('id')]: el.val()});
-        var url=(el[0].id==='mobile')?"/sms":"/smail";
+        var url=(el[0].id==='mobile')?"/sms":"/email";
         var icon_str=(el[0].id==='mobile')?'<i class="fas fa-sms"></i>':'<i class="fas fa-envelope"></i>';
         $.ajax({
             url: url,
@@ -163,9 +167,14 @@ $(document).ready(function () {
                 setTimeout(function () {
                     alert.slideUp("slow");
                 },5000);
+                check_str= verify_data['mobile'] || verify_data['email'];
                 patterns['code'] = RegExp('^' + verify_data['code'] + '$');
                 console.log(patterns['code']);
-                check_str= verify_data['mobile'] || verify_data['email'];
+                setTimeout(function () {
+                    patterns['code']=RegExp(/^$/);
+                    code.blur().focus();
+                    console.log('验证码失效！');
+                },10*60*1000);
             }
         });
     }
@@ -180,7 +189,7 @@ $(document).ready(function () {
                     send.text("重发(" + count + "s)");
                     if (count === 0) {
                         clearInterval(interval);
-                        send.text("发送").removeAttr("disabled");
+                        send.text("发 送").removeAttr("disabled");
                     }
                     count--;
                     return f
