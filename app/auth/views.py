@@ -33,6 +33,7 @@ def send_sms():
     data=json.loads(request.get_data())
     mobile=data['mobile']
     receiver="+86"+mobile
+    code = str('^%s$' % generate_code(6)) if data['code'] == '^$' else data['code']
     try:
         # 需注册腾讯云账户，获取账户密钥对SecretId和SecretKey
         cred = credential.Credential(Config.SMS_SECRET_ID, Config.SMS_SECRET_KEY)
@@ -45,9 +46,9 @@ def send_sms():
         req.PhoneNumberSet = [receiver]
         # 需在短信应用中设置并申请短信模板，获取短信模板ID（审核通过后才可用）
         req.TemplateID = "748406"
-        req.TemplateParamSet = [generate_code(6)]
+        req.TemplateParamSet = [code[1:-1]]
         resp = client.SendSms(req)
-        verify_data={'mobile':mobile,'code':req.TemplateParamSet[0],'msg':'注册验证码短信已发送。'}
+        verify_data={'mobile':mobile,'code':code,'msg':'注册验证码短信已发送。'}
         return verify_data, 200
     except TencentCloudSDKException as err:
         print('error', err)
@@ -56,10 +57,10 @@ def send_sms():
 @auth.route('/email', methods=['POST'])
 def send_email():
     data=json.loads(request.get_data())
-    code=generate_code(6)
+    code=str('^%s$'%generate_code(6)) if data['code']=='^$' else data['code']
     to=data['email']
-    msg = Message('【Qvault】注册验证码', sender='qvault@163.com', recipients=[to])
-    msg.html = render_template('auth/email_confirmation.html',code=code)
+    msg = Message('【Qvault】注册验证码', sender=Config.MAIL_USERNAME, recipients=[to])
+    msg.html = render_template('auth/email_confirmation.html',code=code[1:-1])
     mail.send(msg)
     verify_data={'email':to,'code':code,'msg':'注册验证码邮件已发送。'}
     return verify_data, 200

@@ -18,11 +18,11 @@ $(document).ready(function () {
         'password1':['您还未确认密码。','两次密码输入不一致。']
     };
     var patterns={
-        'mobile':/^[1][3-9][0-9]{9}$/,
-        'code':/^$/,
-        'email':/^[a-zA-Z\d\\._-]+@[a-zA-Z\d._-]+\.[a-zA-Z]+$/,
-        'username':/^(?![._-])[\w\u4E00-\u9FA5._-]{1,15}[a-zA-Z\d\u4E00-\u9FA5]{1}$/,
-        'password':/^[\w]{6,18}$/
+        'mobile':'^[1][3-9][0-9]{9}$',
+        'code':'^$',
+        'email':'^[a-zA-Z\\d\\._-]+@[a-zA-Z\\d._-]+\\.[a-zA-Z]+$',
+        'username':'^(?![._-])[\\w\\u4E00-\\u9FA5._-]{1,15}[a-zA-Z\\d\\u4E00-\\u9FA5]{1}$',
+        'password':'^[\\w]{6,18}$'
     };
     // 添加检查通过样式
     function addPassedInfo(el) {
@@ -52,7 +52,7 @@ $(document).ready(function () {
             addFailedInfo(el,0);
             return false;
         }
-        else if (!(patterns[el[0].id].test(el.val()))){
+        else if (!(RegExp(patterns[el[0].id]).test(el.val()))){
             addFailedInfo(el,1);
             return false;
         }
@@ -104,7 +104,7 @@ $(document).ready(function () {
             addPassedInfo(code);
         }
     }
-    // 输入框响应功能
+    // 输入框检查功能
     var checkInput=function (){
         if (this.id==='username' && checkPatterns(username) && checkRegister(username)){
             addPassedInfo(username);
@@ -152,7 +152,8 @@ $(document).ready(function () {
     var [send,alert]=[$("#send"),$("#alert")];
     var check_str;
     function sendCode(el){
-        var el_data=JSON.stringify({[el.attr('id')]: el.val()});
+        countdown(5);
+        var el_data=JSON.stringify({[el.attr('id')]: el.val(),'code':patterns['code']});
         var url=(el[0].id==='mobile')?"/sms":"/email";
         var icon_str=(el[0].id==='mobile')?'<i class="fas fa-sms"></i>':'<i class="fas fa-envelope"></i>';
         $.ajax({
@@ -168,32 +169,35 @@ $(document).ready(function () {
                     alert.slideUp("slow");
                 },5000);
                 check_str= verify_data['mobile'] || verify_data['email'];
-                patterns['code'] = RegExp('^' + verify_data['code'] + '$');
+                patterns['code']=verify_data['code'];
                 console.log(patterns['code']);
                 setTimeout(function () {
-                    patterns['code']=RegExp(/^$/);
+                    patterns['code']='^$';
                     code.blur().focus();
                     console.log('验证码失效！');
-                },10*60*1000);
+                },20*1000);
             }
         });
+    }
+    // 倒计时功能
+    function countdown(sec) {
+        var interval=setInterval(function f() {
+            send.attr("disabled", true);
+            send.text(sec + " 秒");
+            if (sec === 0) {
+                clearInterval(interval);
+                send.text("重 发").removeAttr("disabled");
+            }
+            sec--;
+            return f
+        }(), 1000);
     }
     // 图形滑块验证功能
     function slideCaptcha(el){
         var captcha1 = new TencentCaptcha('2037396490', function (res) {
             if (res.ret === 0) {
                 code.focus();
-                var count = 60;
-                var interval = setInterval(function f() {
-                    send.attr("disabled", true);
-                    send.text("重发(" + count + "s)");
-                    if (count === 0) {
-                        clearInterval(interval);
-                        send.text("发 送").removeAttr("disabled");
-                    }
-                    count--;
-                    return f
-                }(), 1000);
+                countdown(5);
                 sendCode(el);
             }
         });
@@ -204,7 +208,7 @@ $(document).ready(function () {
         if ($(".input-wrap.mobile").css('display')==='block') {
             slideCaptcha(mobile);}
         else{
-            slideCaptcha(email);}
+            sendCode(email);}
     });
     // 切换验证方式
     function switchEvent(display,hidden,color){
