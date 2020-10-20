@@ -14,6 +14,12 @@ class Config:
     URI='mysql+mysqlconnector://root:{}@127.0.0.1:3306/{}?charset=utf8mb4'
     # 关闭SQLAlchemy警告提示
     SQLALCHEMY_TRACK_MODIFICATIONS=False
+    # 配置电子邮件参数
+    MAIL_SERVER=os.environ.get('MAIL_SERVER','smtp.163.com')
+    MAIL_PORT=int(os.environ.get('MAIL_PORT','25'))
+    MAIL_USE_TLS=os.environ.get('MAIL_USE_TLS','true')
+    MAIL_USERNAME=os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD=os.environ.get('MAIL_PASSWORD')
 
 # 开发模式配置
 class DevelopmentConfig(Config):

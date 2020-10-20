@@ -1,7 +1,8 @@
 from . import auth
-from flask import json, request, redirect, render_template, url_for
+from flask import json,request, redirect, render_template, url_for, flash
 from ..models import User
-
+from .forms import RegistrationForm, LoginForm
+from ..import db
 import random
 from config import Config
 
@@ -10,9 +11,8 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.sms.v20190711 import sms_client, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 
-from flask import flash
-from .forms import RegistrationForm, LoginForm
-from ..import db
+from flask_mail import Message
+from app import mail
 
 @auth.route('/check', methods=['POST'])
 def check_data():
@@ -22,17 +22,17 @@ def check_data():
     else:
         return 'true'
 
+def generate_code(len):
+    code = ""
+    for i in range(len):
+        code += str(random.randint(0, 9))
+    return code
+
 @auth.route('/sms', methods=['POST'])
-def send_message():
-    data = json.loads(request.get_data())
+def send_sms():
+    data=json.loads(request.get_data())
     mobile=data['mobile']
     receiver="+86"+mobile
-    # 生成随机验证码
-    def make_code(len):
-        code = ""
-        for i in range(len):
-            code += str(random.randint(0, 9))
-        return code
     try:
         # 需注册腾讯云账户，获取账户密钥对SecretId和SecretKey
         cred = credential.Credential(Config.SMS_SECRET_ID, Config.SMS_SECRET_KEY)
@@ -44,14 +44,25 @@ def send_message():
         req.Sign = "Qvault"
         req.PhoneNumberSet = [receiver]
         # 需在短信应用中设置并申请短信模板，获取短信模板ID（审核通过后才可用）
-        req.TemplateID = "664214"
-        req.TemplateParamSet = [make_code(6)]
+        req.TemplateID = "748406"
+        req.TemplateParamSet = [generate_code(6)]
         resp = client.SendSms(req)
-        verify_data={'mobile':mobile,'code':req.TemplateParamSet[0],'msg':'注册验证码已发送。'}
+        verify_data={'mobile':mobile,'code':req.TemplateParamSet[0],'msg':'注册验证码短信已发送。'}
         return verify_data, 200
     except TencentCloudSDKException as err:
         print('error', err)
         return "error", 400
+
+@auth.route('/email', methods=['POST'])
+def send_email():
+    data=json.loads(request.get_data())
+    code=generate_code(6)
+    to=data['email']
+    msg = Message('【Qvault】注册验证码', sender='qvault@163.com', recipients=[to])
+    msg.html = render_template('auth/email_confirmation.html',code=code)
+    mail.send(msg)
+    verify_data={'email':to,'code':code,'msg':'注册验证码邮件已发送。'}
+    return verify_data, 200
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
