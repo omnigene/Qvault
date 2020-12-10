@@ -1,5 +1,5 @@
 from . import auth
-from flask import json,request, redirect, render_template, url_for, flash
+from flask import json,request, redirect, render_template, url_for, flash, session
 from ..models import User
 from .forms import RegistrationForm, LoginForm
 from ..import db
@@ -76,7 +76,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('您已注册成功！')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('auth.login'))
     return render_template('auth/register.html',form=form)
 
 @auth.route('/login', methods=['GET','POST'])

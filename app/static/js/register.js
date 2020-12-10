@@ -152,7 +152,7 @@ $(document).ready(function () {
     var [send,alert]=[$("#send"),$("#alert")];
     var check_str;
     function sendCode(el){
-        countdown(5);
+        countdown(60);
         var el_data=JSON.stringify({[el.attr('id')]: el.val(),'code':patterns['code']});
         var url=(el[0].id==='mobile')?"/sms":"/email";
         var icon_str=(el[0].id==='mobile')?'<i class="fas fa-sms"></i>':'<i class="fas fa-envelope"></i>';
@@ -167,15 +167,13 @@ $(document).ready(function () {
                 alert.slideDown("slow");
                 setTimeout(function () {
                     alert.slideUp("slow");
-                },5000);
+                },3000);  // 弹出验证发已发送的信息提示
                 check_str= verify_data['mobile'] || verify_data['email'];
                 patterns['code']=verify_data['code'];
-                console.log(patterns['code']);
                 setTimeout(function () {
                     patterns['code']='^$';
                     code.blur().focus();
-                    console.log('验证码失效！');
-                },20*1000);
+                },600*1000);  // 设置验证码十分钟后失效
             }
         });
     }
@@ -197,7 +195,7 @@ $(document).ready(function () {
         var captcha1 = new TencentCaptcha('2037396490', function (res) {
             if (res.ret === 0) {
                 code.focus();
-                countdown(5);
+                countdown(60);
                 sendCode(el);
             }
         });

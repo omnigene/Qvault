@@ -16,6 +16,9 @@
     </div>
     <form action="{{ url_for('auth.login') }}" method="post" autocomplete="off" novalidate>
         {{ form.csrf_token }}
+        <div id="alert" class="alert alert-primary" role="alert">
+            <span></span>
+        </div>
         {{ render_field(form.account) }}
         {{ render_field(form.input_password) }}
         <div class="custom-control custom-checkbox mb-3">
@@ -27,4 +30,6 @@
         <hr>
         <p class="link-to">没有账号？<a href="{{ url_for('auth.register') }}" class="link-register" id="to-register">注册</a></p>
     </form>
+    <script>var msg={{ get_flashed_messages() | tojson }} </script>
+    <script src="{{ url_for('static',filename='js/login.js') }}"></script>
 {% endblock %}
