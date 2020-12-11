@@ -23,6 +23,7 @@ body{
 
 /*弹出信息提示框部分*/
 #alert{
+    margin-top: 10px;
     margin-bottom: 0;
     width: 100%;
     background-color: #0052e6;
@@ -55,7 +56,7 @@ input.form-control:hover{
 }
 /*各选项卡页面首行输入框样式*/
 #account,#username{
-    margin-top: 30px;
+    margin-top: 25px;
 }
 /*输入框输入提示（正确和错误）的样式*/
 p {

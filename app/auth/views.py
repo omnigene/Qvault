@@ -82,4 +82,9 @@ def register():
 @auth.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
+    if request.method=='POST':
+        user=User.query.filter_by(username=form.account.data).first()
+        if user is not None and user.verify_password(form.input_password.data):
+            return redirect(url_for('main.index'))
+        flash('账户名或密码错误！')
     return render_template('auth/login.html', form=form)
