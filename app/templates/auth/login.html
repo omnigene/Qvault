@@ -14,7 +14,7 @@
         <p class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</p>
         <p class="form-name">欢迎回来！</p>
     </div>
-    <form action="{{ url_for('auth.login') }}" method="post" autocomplete="off" novalidate>
+    <form id="login-form" action="{{ url_for('auth.login') }}" method="post" target="_parent" autocomplete="off" novalidate>
         {{ form.csrf_token }}
         <div id="alert" class="alert alert-primary" role="alert">
             <span></span>
@@ -30,6 +30,8 @@
         <hr>
         <p class="link-to">没有账号？<a href="{{ url_for('auth.register') }}" class="link-register" id="to-register">注册</a></p>
     </form>
-    <script>var msg={{ get_flashed_messages() | tojson }} </script>
+    <script>
+        var msg={{ get_flashed_messages() | tojson }}
+    </script>
     <script src="{{ url_for('static',filename='js/login.js') }}"></script>
 {% endblock %}

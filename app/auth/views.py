@@ -1,5 +1,7 @@
 from . import auth
 from flask import json,request, redirect, render_template, url_for, flash, session
+from flask_login import login_user
+from sqlalchemy import or_
 from ..models import User
 from .forms import RegistrationForm, LoginForm
 from ..import db
@@ -70,8 +72,8 @@ def register():
     form=RegistrationForm()
     if request.method=='POST':
         user=User(username=form.username.data,
-                  mobile=form.mobile.data,
-                  email=form.email.data,
+                  mobile=form.mobile.data or None,
+                  email=form.email.data or None,
                   password=form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -79,12 +81,21 @@ def register():
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html',form=form)
 
+@auth.route('/login-check', methods=['POST'])
+def login_check():
+    data=json.loads(request.get_data())
+    account=data['account']
+    user= User.query.filter(or_(User.username==account,User.mobile==account,User.email==account)).first()
+    if user==None or not user.verify_password(data['input_password']):
+        return 'false'
+    return 'true'
+
 @auth.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
+    account=form.account.data
     if request.method=='POST':
-        user=User.query.filter_by(username=form.account.data).first()
-        if user is not None and user.verify_password(form.input_password.data):
-            return redirect(url_for('main.index'))
-        flash('账户名或密码错误！')
+        user=User.query.filter(or_(User.username==account,User.mobile==account,User.email==account)).first()
+        login_user(user,form.remember_me.data)
+        return redirect(url_for('main.index'))
     return render_template('auth/login.html', form=form)
