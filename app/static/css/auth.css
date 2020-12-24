@@ -50,7 +50,7 @@ i{
 
 input.form-control:focus,
 input.form-control:hover{
-    border:1px solid #0052e6;
+    border:1px solid #004aed;
     box-shadow:0 0 15px rgba(0,82,230,0.3) ;
     outline: none;
 }
@@ -91,7 +91,7 @@ p {
 #send{
     width: 100%;
     box-shadow:0 0 15px rgba(0,82,230,0.5) ;
-    color: #0052e6;
+    color: #004aed;
     border: solid 1px;
     animation-name: breath;
     animation-duration: 3s;
@@ -119,16 +119,16 @@ p {
     box-shadow: none;
     animation: none;
     background-color: transparent;
-    color:#0052e6;
+    color:#004aed;
 }
 #send:hover{
-    background-color: #0052e6;
-    border-color: #0052e6;
+    background-color: #004aed;
+    border-color: #004aed;
     color: white;
 }
 #send:active{
     background-color: transparent;
-    color:#0052e6;
+    color:#004aed;
 }
 /* Switch开关样式 */
 /* 必须是input为 checkbox class 添加 switch 才能实现以下效果 */
@@ -145,7 +145,7 @@ input[type='checkbox'].switch{
     position: relative;
     width: 2rem;
     height: 1rem;
-    background: #0052e6;
+    background: #004aed;
     border-radius: 10px;
     transition: border-color .3s, background-color .3s;
 }
@@ -172,7 +172,7 @@ input[type='checkbox'].switch:checked::after {
     top: 2px;
 }
 .mobile-tag{
-    color:#0052e6;
+    color:#004aed;
 }
 .email-tag{
     color:lightgray;
@@ -200,7 +200,7 @@ input[type='checkbox'].switch:checked::after {
     padding: .5rem 1.25rem;
 }
 #next:hover,#submit:hover{
-    background-color: rgb(0,82,230);
+    background-color: #004aed;
     box-shadow:0 0 15px rgba(0,82,230,0.5) ;
 }
 #pre{
@@ -213,7 +213,7 @@ input[type='checkbox'].switch:checked::after {
     margin-left: 5px;
     width: 100%;
     font-size: 1rem;
-    color: #0052e6;
+    color: #004aed;
 }
 
 #pre-text:hover{

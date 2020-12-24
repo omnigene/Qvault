@@ -1,14 +1,15 @@
 $(function () {
     try {
-        genGraph(avatar_hash);
+        genGraph($("#nav-avatar"),avatar_hash);
+        genGraph($("#menu-avatar"),avatar_hash);
     }
     catch (e) {
         avatar_hash=undefined;
     }
 
 // 图像生成函数
-    function genGraph(hash) {
-        var size=parseInt($("#nav-avatar").css("width"));
+    function genGraph(el,hash) {
+        var size=parseInt(el.css("width"));
         var [tl, t, tr, l, c, r, bl, b, br] = [[0, 0], [0.5, 0], [1, 0], [0, 0.5], [0.5, 0.5], [1, 0.5], [0, 1], [0.5, 1], [1, 1]].map(e => e.map(e => e * size / 3));
         var shape = [
             [tl, t, l], [t, l, c], [tl, l, c], [tl, t, c],
@@ -55,7 +56,7 @@ $(function () {
             drawGraph(ctx, eblock.map(e => e.map(e => e + 1 / 12 * size)), ecolor);
             ctx.translate(-1 / 6 * size, -1 / 6 * size);
         }
-        $(".avatar").append(block);
+        el.append(block);
     }
 // 绘图函数
     function drawGraph(ctx, shape, color) {

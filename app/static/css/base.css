@@ -1,17 +1,17 @@
 .navbar{
-    padding: 6px 72px;
+    padding: 6px 70px;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
 }
 
 .navbar-brand{
     font-family: "Constantia","Book Antiqua", serif;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 36px;
     margin-right: 45px;
 }
 
 .v{
-    color: #005bff;
+    color: #004aed;
 }
 
 .nav-item{
@@ -23,15 +23,15 @@
     color: black;
 }
 .btn-outline-custom:hover{
-    background-color: #0052e6;
+    background-color: #004aed;
     color:white;
-    border-color: #0052e6;
+    border-color: #004aed;
     /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
     box-shadow:3px 3px 12px 1px rgba(0,91,255,0.5) ;
 }
 .btn-outline-custom:active{
-    border-color: #0049cc;
-    color: #0049cc;
+    border-color: #004aed;
+    color: #004aed;
     background-color: transparent;
 }
 
@@ -39,7 +39,91 @@ button{
     outline: none !important;
 }
 
+/*导航栏头像*/
 #nav-avatar{
-    width:36px;
-    height:36px;
+    width:39px;
+    height:39px;
+    border:none;
+    padding: 0 0;
+    margin-top: 5px;
+    background-color: transparent;
+}
+#nav-avatar .block{
+    border-radius: 999px;
+    border: solid 1.2px #004aed;
+}
+#nav-avatar .block:hover{
+    box-shadow: 0 0 30px 0 rgba(0,74,237,0.3);
+}
+@-webkit-keyframes clockwiseRotate {
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+@-webkit-keyframes anti-clockwiseRotate {
+    0%{-webkit-transform:rotate(360deg);}
+    100%{-webkit-transform:rotate(0deg);}
+}
+/*导航栏头像下拉菜单*/
+.dropdown-content {
+    opacity: 1;
+    margin-left: 120px;
+    margin-top: 20px;
+    position: fixed;
+    min-width: 200px;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
+    color: rgba(0,0,0,0.5);
+    border-radius: 6px;
+}
+@-webkit-keyframes leftIn {
+    0%{transform: none}
+    100% {opacity: 1;transform: translate(-220px)}
+}
+@-webkit-keyframes rightOut {
+    0%{transform: none}
+    100%{opacity: 0;transform: translate(220px)}
+}
+/*下拉菜单头像*/
+.avatar-wrap{
+    padding-top: 20px;
+}
+#menu-avatar{
+    width: 60px;
+    height: 60px;
+    horiz-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+/*下拉菜单选项*/
+#user-info{
+    text-align: center;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10px;
+}
+#username{
+    font-size: 18px;
+    color: #004aed;
+}
+.menu-item{
+    padding-left: 45px;
+    line-height: 39px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+.menu-item:hover{
+    background-color: #004aed;
+    color:white;
+    cursor: pointer;
+    box-shadow: 3px 0 7px -3px rgba(0,74,237,1), -3px 0 7px -3px rgba(0,74,237,1);
+}
+
+i{
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 1.3rem;
+}
+
+.button-wrap{
+    border-top: 1px solid lightgrey;
+    padding: 10px;
+    text-align: center;
 }
