@@ -1,6 +1,6 @@
 from . import auth
 from flask import json,request, redirect, render_template, url_for, flash, session
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy import or_
 from ..models import User
 from .forms import RegistrationForm, LoginForm
@@ -99,6 +99,11 @@ def login():
         login_user(user,form.remember_me.data)
         return redirect(url_for('main.index'))
     return render_template('auth/login.html', form=form)
+
+@auth.before_app_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.record()
 
 @login_required
 @auth.route('/logout')

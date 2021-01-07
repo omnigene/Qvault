@@ -2,6 +2,8 @@ $(function () {
     try {
         genGraph($("#nav-avatar"),avatar_hash);
         genGraph($("#menu-avatar"),avatar_hash);
+        genGraph($("#user-avatar"),avatar_hash);
+        genGraph($("#profile-avatar"),avatar_hash);
     }
     catch (e) {
         avatar_hash=undefined;

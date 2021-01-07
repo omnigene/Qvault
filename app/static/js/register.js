@@ -155,7 +155,7 @@ $(document).ready(function () {
         countdown(60);
         var el_data=JSON.stringify({[el.attr('id')]: el.val(),'code':patterns['code']});
         var url=(el[0].id==='mobile')?"/sms":"/email";
-        var icon_str=(el[0].id==='mobile')?'<i class="fas fa-sms"></i>':'<i class="fas fa-envelope"></i>';
+        var icon_str=(el[0].id==='mobile')?'<i class="bi bi-chat-dots"></i>':'<i class="bi bi-envelope"></i>';
         $.ajax({
             url: url,
             type: "POST",

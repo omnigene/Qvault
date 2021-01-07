@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ current_user.username }}{% endblock %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+{% endblock %}
+
+{% block body_content %}
+    <div class="user-page">
+        <div class="user-card">
+            <div class="user-banner"></div>
+            <div class="info-head">
+                <div class="user-avatar-wrap"><div id="user-avatar" class="avatar"></div></div>
+                <div class="user-text">
+                    <button class="btn btn-outline-custom" data-toggle="modal" data-target="#profileModal">编辑个人资料</button>
+                </div>
+            </div>
+            <div class="info-body">
+                <h4>{{ current_user.username }}</h4>
+                <p>这里是简介</p>
+            </div>
+        </div>
+        <div id="user-content"></div>
+        <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" id="profileModal-dialog">
+                <div class="modal-content profile" id="modal-content" >
+                    <div class="modal-header profile">
+                        <button type="button" class="close profile" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe class="profile-frame" src="/profile" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='js/user.js')}}"></script>
+{% endblock %}

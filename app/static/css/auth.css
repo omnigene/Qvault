@@ -26,13 +26,15 @@ body{
     margin-top: 10px;
     margin-bottom: 0;
     width: 100%;
-    background-color: #0052e6;
+    background-color: #004aed;
     border: none;
     color: white;
     display: none;
+    padding: 5px 20px;
+    padding-bottom: 10px;
 }
 i{
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
 /*选项卡页面内容部分*/
@@ -51,7 +53,7 @@ i{
 input.form-control:focus,
 input.form-control:hover{
     border:1px solid #004aed;
-    box-shadow:0 0 15px rgba(0,82,230,0.3) ;
+    box-shadow:0 0 15px rgba(0,74,237,0.3) ;
     outline: none;
 }
 /*各选项卡页面首行输入框样式*/
@@ -90,7 +92,7 @@ p {
 }
 #send{
     width: 100%;
-    box-shadow:0 0 15px rgba(0,82,230,0.5) ;
+    box-shadow:0 0 15px rgba(0,74,237,0.5) ;
     color: #004aed;
     border: solid 1px;
     animation-name: breath;
@@ -101,16 +103,16 @@ p {
 }
 @keyframes breath {
     0%{
-        box-shadow:5px 3px 12px rgba(0,82,230,0.7) ;
+        box-shadow:5px 3px 12px rgba(0,74,237,0.7) ;
         opacity: 1;
     }
     50%{
-        box-shadow:0 0 0 rgba(0,82,230,0.7) ;
+        box-shadow:0 0 0 rgba(0,74,237,0.7) ;
         text-shadow: none;
         opacity: 0.9;
     }
     100%{
-        box-shadow:5px 3px 12px rgba(0,82,230,0.7) ;
+        box-shadow:5px 3px 12px rgba(0,74,237,0.7) ;
         opacity: 1;
     }
 }
@@ -190,7 +192,7 @@ input[type='checkbox'].switch:checked::after {
     display: block;
 }
 #next,#submit{
-    background-color: rgba(0,82,230,0.5);
+    background-color: rgba(0,74,237,0.5);
     font-size: 1rem;
     color:white;
     font-weight: bold;
@@ -201,7 +203,7 @@ input[type='checkbox'].switch:checked::after {
 }
 #next:hover,#submit:hover{
     background-color: #004aed;
-    box-shadow:0 0 15px rgba(0,82,230,0.5) ;
+    box-shadow:0 0 15px rgba(0,74,237,0.5) ;
 }
 #pre{
     display: none;

@@ -6,7 +6,7 @@ $(function () {
     $('#account,#input_password').on({
         focus:  function () {
             $(this).siblings().last().removeClass("errors-icon").empty();
-            $(this).css({"border-color":"#0052e6","box-shadow":"0 0 15px rgba(0,91,255,0.3)"});
+            $(this).css({"border-color":"#004aed","box-shadow":"0 0 15px rgba(0,91,255,0.3)"});
         },
         blur: function () {
             if ($(this).val()===''){
@@ -19,8 +19,8 @@ $(function () {
         }
     })
     var [acct,pwd,alt,submit]=[$('#account'),$('#input_password'),$('#alert'),$('#submit')];
-    var times_icon='<i class="fas fa-times"></i>';
-    var check_icon='<i class="fas fa-check"></i>';
+    var times_icon='<i class="bi bi-exclamation-diamond"></i>';
+    var check_icon='<i class="bi bi-check-circle-fill"></i>';
     if (msg[0]!==undefined) {
         showMessage(check_icon,msg[0])
     }

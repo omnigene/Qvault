@@ -1,0 +1,29 @@
+{% macro render_field(field) %}
+    <div class="input-wrap {{ field.id }}">
+        <div class="input-label">
+            {{ field.label }}
+            <div class="length-info">
+                <span class="input-length"></span>
+                <span class="max-length">/ {{ field.render_kw['maxlength'] }}</span>
+            </div>
+        </div>
+        {{ field(class="form-input") }}
+    </div>
+{% endmacro %}
+
+{% macro render_select(fields) %}
+    <div class="input-wrap date">
+        <div class="input-label date">出生日期</div>
+
+        <div class="select-wrap">
+            {% for name in fields %}
+                <div class="selector {{ name }}">
+                    <select class="select {{ name }}">
+                        <option value=""></option>
+                    </select>
+                    <div class="select-label">{{ fields[name] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

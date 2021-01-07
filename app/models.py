@@ -1,6 +1,7 @@
 from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 import hashlib
 
 class User(UserMixin, db.Model):
@@ -11,6 +12,12 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
+    name=db.Column(db.String(64))
+    # gender=db.Column(db.Boolean(),nullable=True)
+    location=db.Column(db.String(64))
+    about_me=db.Column(db.Text( ))
+    member_since=db.Column(db.DateTime(), default=datetime.utcnow)
+    last_seen=db.Column(db.DateTime(),default=datetime.utcnow)
 
     # 禁止通过用户模型的密码属性来读取用户密码
     @property
@@ -27,8 +34,13 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def avatar_hash(self):
-        return hashlib.md5(self.email.lower().encode('utf-8')).hexdigest()
+        return hashlib.md5(self.username.lower().encode('utf-8')+str(self.member_since).lower().encode('utf-8')).hexdigest()
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+    def record(self):
+        self.last_seen=datetime.utcnow()
+        db.session.add(self)
+        db.session.commit()

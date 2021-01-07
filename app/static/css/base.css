@@ -1,59 +1,58 @@
-.navbar{
-    padding: 6px 70px;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+body{
+    background-color: whitesmoke;
 }
-
+.navbar{
+    padding: 6px 6%;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    background-color: white!important;
+}
 .navbar-brand{
     font-family: "Constantia","Book Antiqua", serif;
     font-weight: bolder;
     font-size: 36px;
     margin-right: 45px;
 }
-
 .v{
     color: #004aed;
 }
-
 .nav-item{
     margin-right:16px;
 }
-
+.nav-link{
+    padding-bottom: 0;
+}
+/*导航栏登录按钮*/
 .btn-outline-custom {
-    border-color: black;
-    color: black;
+    border-color: #004aed;
+    color: #004aed;
 }
 .btn-outline-custom:hover{
     background-color: #004aed;
     color:white;
     border-color: #004aed;
     /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
-    box-shadow:3px 3px 12px 1px rgba(0,91,255,0.5) ;
+    box-shadow:1px 3px 8px 0 rgba(0,74,237,0.5) ;
 }
-.btn-outline-custom:active{
-    border-color: #004aed;
-    color: #004aed;
-    background-color: transparent;
-}
-
 button{
-    outline: none !important;
+    outline: none!important;
 }
-
 /*导航栏头像*/
-#nav-avatar{
-    width:39px;
-    height:39px;
-    border:none;
-    padding: 0 0;
-    margin-top: 5px;
-    background-color: transparent;
-}
-#nav-avatar .block{
+.nav-avatar-wrap{
+    width:45px;
+    height:45px;
+    background-color: white;
     border-radius: 999px;
+    display: flex;
+    justify-content:center;  /*水平居中*/
+    align-items:center;   /*垂直居中*/
     border: solid 1.2px #004aed;
 }
-#nav-avatar .block:hover{
-    box-shadow: 0 0 30px 0 rgba(0,74,237,0.3);
+.nav-avatar-wrap:hover{
+    cursor: pointer;
+}
+.nav-avatar-wrap .avatar{
+    width: 36px;
+    height: 36px;
 }
 @-webkit-keyframes clockwiseRotate {
     0%{-webkit-transform:rotate(0deg);}
@@ -67,26 +66,27 @@ button{
 .dropdown-content {
     opacity: 1;
     margin-left: 120px;
-    margin-top: 20px;
+    margin-top: 25px;
     position: fixed;
     min-width: 200px;
     box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
     color: rgba(0,0,0,0.5);
     border-radius: 6px;
+    z-index: 999;
+    background-color: white;
 }
 @-webkit-keyframes leftIn {
     0%{transform: none}
-    100% {opacity: 1;transform: translate(-220px)}
+    100% {opacity: 1;transform: translate(-218px)}
 }
 @-webkit-keyframes rightOut {
     0%{transform: none}
-    100%{opacity: 0;transform: translate(220px)}
+    100%{opacity: 0;transform: translate(218px)}
 }
-/*下拉菜单头像*/
-.avatar-wrap{
+.menu-avatar-wrap{
     padding-top: 20px;
 }
-#menu-avatar{
+.menu-avatar-wrap .avatar{
     width: 60px;
     height: 60px;
     horiz-align: center;
@@ -94,12 +94,13 @@ button{
     border-radius: 5px;
 }
 /*下拉菜单选项*/
-#user-info{
+.account-info{
+    margin-top: 5px;
     text-align: center;
     border-bottom: 1px solid lightgrey;
     padding-bottom: 10px;
 }
-#username{
+.username{
     font-size: 18px;
     color: #004aed;
 }
@@ -113,17 +114,34 @@ button{
     background-color: #004aed;
     color:white;
     cursor: pointer;
-    box-shadow: 3px 0 7px -3px rgba(0,74,237,1), -3px 0 7px -3px rgba(0,74,237,1);
+    box-shadow: 3px 0 7px -4px rgba(0,74,237,1), -3px 0 7px -4px rgba(0,74,237,1);
 }
-
 i{
     margin-right: 10px;
     display: inline-block;
     font-size: 1.3rem;
 }
-
 .button-wrap{
     border-top: 1px solid lightgrey;
     padding: 10px;
     text-align: center;
+}
+/*登录&注册模态框*/
+.modal-content{
+    background-color: whitesmoke;
+}
+.modal-header{
+    border-bottom: none;
+    padding:5px 10px;
+}
+.modal-body{
+    padding-top: 0;
+}
+.modal-dialog {
+    max-width: 33%;
+    min-width: 450px;
+}
+.login-frame{
+    width:100%;
+    border:none;
 }

@@ -17,7 +17,7 @@
     <!-- 导入表单生成辅助模板文件form_constructor.html-->
     {% from "auth/form_constructor.html" import render_field %}
     <div class="title-wrap">
-        <p class="brand">Q<span class="v" style="color:#0052e6;">v</span>ault</p>
+        <p class="brand">Q<span class="v" style="color:#004aed;">v</span>ault</p>
         <p class="form-name">创建账号</p>
     </div>
     <div id="wrapform">
@@ -34,7 +34,7 @@
                     {{ render_field(form.username) }}
                     {{ render_field(form.password) }}
                     {{ render_field(form.password1) }}
-                    <p class="link-to">已有账号？<a href="{{ url_for('auth.login') }}" id="to-login" style="color:#0052e6;">登录</a></p>
+                    <p class="link-to">已有账号？<a href="{{ url_for('auth.login') }}" id="to-login" style="color:#004aed;">登录</a></p>
                 </div>
                 <div class="tab-pane" id="second-step" role="tabpanel">
                     <p class="step">第2步：验证账户「<span class="tag mobile">手机</span>丨<span class="tag email">邮箱</span>」</p>

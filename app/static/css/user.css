@@ -1,0 +1,211 @@
+.user-card{
+    width: 70%;
+    margin: 10px auto;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 6px;
+    background-color: white;
+}
+.user-banner{
+    height: 192px;
+    overflow: hidden;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: whitesmoke;
+}
+.info-head{
+    display: flex;
+    justify-content: space-between;
+}
+.user-avatar-wrap{
+    width: 112px;
+    height:112px;
+    margin-top: -64px;
+    margin-left: 50px;
+    background-color: white;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 999px;
+    display: flex;
+    justify-content:center;  /*水平居中*/
+    align-items:center;   /*垂直居中*/
+}
+.user-avatar-wrap .avatar{
+    width: 90px;
+    height:90px;
+    background-color: transparent;
+}
+.user-text{
+    margin-top: 12px;
+    margin-right: 20px;
+}
+.info-body{
+    margin-top: 8px;
+    margin-left: 50px;
+    padding-bottom: 20px;
+}
+/*个人资料编辑modal*/
+#profileModal-dialog{
+    max-width: none;
+    width: 50%;
+}
+.profile-frame{
+    width: 100%;
+    height: 540px;
+    border-radius: 6px;
+    border:none;
+}
+.modal-content.profile{
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 0;
+    border:none;
+}
+/*个人资料编辑页面*/
+.modal-header.profile{
+    margin-bottom: -25px;
+    padding:0 25px;
+    z-index: 99;
+}
+.close.profile{
+    color:white;
+    border: none;
+}
+.user-banner.profile{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-image: url("../imgs/Paint Flow_5.jpg");*/
+}
+.user-banner.profile.mask{
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+    background-image: none;
+}
+.add-banner-img{
+    border:none;
+    background: transparent;
+    color: rgba(255,255,255,0.3);
+    height: 48px;
+    width: 48px;
+    padding: 0;
+    border-radius: 999px;
+}
+.add-banner-img i{
+    font-size: 36px;
+    margin-top: -17px;
+    margin-right: 0;
+    height:48px;
+}
+.add-banner-img:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+.user-avatar-wrap.profile{
+    margin-left: 20px;
+}
+.user-avatar-wrap.profile.avatar{
+    position:absolute;
+    left:0;
+    top:0;
+}
+.add-avatar{
+    width: inherit;
+    height: inherit;
+    position:absolute;
+    left:20px;
+    top:127px;
+    z-index: 99;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: rgba(0,0,0,0.2);
+}
+.add-avatar:hover{
+    color: rgba(0,0,0,0.5);
+}
+.add-avatar i{
+    margin-right: 0;
+    margin-top: -5px;
+}
+/*个人资料编辑的表单及输入框样式*/
+.input-wrap{
+    margin: 20px 20px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: white;
+}
+.input-label{
+    border: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 0 6px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0,0,0,0.5);
+}
+.input-label label{
+    margin-bottom: 0;
+}
+.length-info{
+    display: none;
+}
+.form-input{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+    border:none;
+    box-shadow: none;
+    padding: 2px 6px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    resize: none;
+}
+.form-input:focus{
+    outline:none;
+}
+.input-wrap.about_me textarea{
+    height: 88px;
+}
+
+.input-label.date{
+    border-bottom: none;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.select-wrap{
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    background-color: white;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+.selector{
+    margin: 10px 6px;
+    height:32px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.select-label{
+    padding: 0 8px;
+}
+select{
+    border:none;
+    outline: none;
+    padding:0 5px;
+    width: auto;
+    border-radius: 5px;
+    font-size: 18px;
+    min-width: 58px;
+}
+select.year{
+    min-width: 78px;
+}

@@ -1,0 +1,32 @@
+.profile-wrap{
+    width:50%;
+    margin: 0 auto;
+}
+.profile-banner{
+    height:192px;
+    overflow: hidden;
+}
+.profile-head{
+    display: flex;
+    justify-content: space-between;
+}
+.profile-avatar-wrap{
+    width: 112px;
+    height:112px;
+    margin-top: -64px;
+    margin-left: 50px;
+    background-color: white;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 999px;
+    display: flex;
+    justify-content:center;  /*水平居中*/
+    align-items:center;   /*垂直居中*/
+}
+.profile-avatar-wrap .avatar{
+    width: 90px;
+    height:90px;
+    background-color: transparent;
+}
+button{
+    margin-right: 20px;
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}编辑个人资料{% endblock %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block body_content %}
+    <div class="profile-page">
+        <div class="profile-head-wrap">
+            <input class="upload img" type="file" style="display: none;">
+            <div class="user-banner profile">
+                <div class="user-banner profile mask">
+                    <button class="add-banner-img"><i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+            </div>
+            <div class="info-head">
+                <div class="user-avatar-wrap profile">
+                    <div id="user-avatar" class="avatar"></div>
+                    <button class="add-avatar"><i class="bi bi-plus-circle-fill"></i></button>
+                </div>
+                <div class="user-text">
+                    <button class="btn btn-outline-custom">保存</button>
+                    <script>var avatar_hash='{{ current_user.avatar_hash() }}'</script>
+                </div>
+            </div>
+        </div>
+        {% from "user/form_constructor.html" import render_field %}
+        {% from "user/form_constructor.html" import render_select %}
+        <form>
+            {{ render_field(form.name) }}
+            {{ render_select({'year':'年','month':'月','day':'日'}) }}
+            {{ render_field(form.about_me) }}
+            {{ render_field(form.location) }}
+            {{ render_field(form.link) }}
+        </form>
+    </div>
+    <script src="{{ url_for('static',filename='js/profile.js') }}"></script>
+{% endblock %}
