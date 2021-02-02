@@ -30,8 +30,5 @@
         <hr>
         <p class="link-to">没有账号？<a href="{{ url_for('auth.register') }}" class="link-register" id="to-register">注册</a></p>
     </form>
-    <script>
-        var msg={{ get_flashed_messages() | tojson }}
-    </script>
     <script src="{{ url_for('static',filename='js/login.js') }}"></script>
 {% endblock %}

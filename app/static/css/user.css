@@ -1,5 +1,15 @@
+body{
+    min-width: 450px;
+}
+.alert{
+    width: 30%;
+    margin: 10px auto;
+}
+.user-page{
+    margin: 0 5%;
+}
 .user-card{
-    width: 70%;
+    width: 100%;
     margin: 10px auto;
     box-shadow: 0 3px 10px 0 rgba(0,0,0,0.3);
     border-radius: 6px;
@@ -23,7 +33,7 @@
     margin-left: 50px;
     background-color: white;
     box-shadow: 0 3px 10px 0 rgba(0,0,0,0.3);
-    border-radius: 999px;
+    border-radius: 50%;
     display: flex;
     justify-content:center;  /*水平居中*/
     align-items:center;   /*垂直居中*/
@@ -33,7 +43,7 @@
     height:90px;
     background-color: transparent;
 }
-.user-text{
+.profile-edit{
     margin-top: 12px;
     margin-right: 20px;
 }
@@ -43,9 +53,12 @@
     padding-bottom: 20px;
 }
 /*个人资料编辑modal*/
+.modal-open{
+    padding-right: 0!important;
+}
 #profileModal-dialog{
     max-width: none;
-    width: 50%;
+    width:50%;
 }
 .profile-frame{
     width: 100%;
@@ -61,13 +74,14 @@
 }
 /*个人资料编辑页面*/
 .modal-header.profile{
-    margin-bottom: -25px;
+    margin-bottom: -40px;
     padding:0 25px;
     z-index: 99;
 }
 .close.profile{
     color:white;
     border: none;
+
 }
 .user-banner.profile{
     background-color: white;
@@ -81,22 +95,22 @@
     background-color: rgba(0,0,0,0.2);
     background-image: none;
 }
-.add-banner-img{
+.add-banner{
     border:none;
     background: transparent;
     color: rgba(255,255,255,0.3);
     height: 48px;
     width: 48px;
     padding: 0;
-    border-radius: 999px;
+    border-radius: 50%;
 }
-.add-banner-img i{
+.add-banner i{
     font-size: 36px;
     margin-top: -17px;
     margin-right: 0;
     height:48px;
 }
-.add-banner-img:hover{
+.add-banner:hover{
     background-color: rgba(255,255,255,0.1);
 }
 .user-avatar-wrap.profile{
@@ -168,7 +182,6 @@
 .input-wrap.about_me textarea{
     height: 88px;
 }
-
 .input-label.date{
     border-bottom: none;
     background-color: white;
@@ -183,7 +196,6 @@
     border-top: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 .selector{
     margin: 10px 6px;
@@ -208,4 +220,93 @@ select{
 }
 select.year{
     min-width: 78px;
+}
+/*图片编辑modal样式*/
+#imageModal-dialog{
+    width: 36%;
+}
+.modal-content{
+    border:none;
+}
+.modal-content.image i{
+    margin-bottom: 6.5px;
+    margin-right: 0;
+}
+.modal-header.image{
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    color: #004aed;
+    padding-bottom: 15px;
+}
+.img-close{
+    border-radius: 88px;
+    width:32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    background-color: black;
+    box-shadow:1px 3px 8px 0 rgba(0,0,0,0.6) ;
+}
+.img-close:hover{
+    cursor: pointer;
+}
+/*图片及遮罩区域*/
+.modal-body.image{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:450px;
+    height:450px;
+    padding: 0;
+}
+.modal-body.image:hover{
+    cursor: move;
+}
+.img-preview{
+    position: absolute;
+}
+.img-mask{
+    /*width:240px;*/
+    /*height:240px;*/
+    /*border-radius: 50%;*/
+    border: 3px solid white;
+    box-sizing: content-box;
+    box-shadow: 0 0 0 2000px rgba(0,0,0,0.6);
+    z-index: 1;
+}
+.range-wrap{
+    padding:15px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #004aed;
+}
+.range-wrap i{
+    font-size: 1.5rem;
+}
+.img-range{
+    -webkit-appearance: none;
+    width:100%;
+    margin: 0 8px;
+    border-radius: 8px;
+    height: 7px;
+    border:1px solid #0049ed;
+}
+.img-range:hover{
+    cursor: pointer;
+}
+.img-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background: #004aed;
+    border-radius: 50%; /*外观设置为圆形*/
+    border:1.2px solid white;
+}
+.img-range::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 5px rgba(0,74,273,0.2);
 }

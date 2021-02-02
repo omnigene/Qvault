@@ -10,6 +10,7 @@ mail=Mail()
 login_manager=LoginManager()
 # 绑定登录视图函数
 login_manager.login_view='auth.login'
+login_manager.login_message='该页面需登录后访问！'
 
 # 定义初始化应用的函数
 def create_app(config_name):

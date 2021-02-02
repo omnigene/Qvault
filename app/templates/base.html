@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="{{ url_for('static',filename='js/functions.js') }}"></script>
     <link rel="shortcut icon" href="{{ url_for('static',filename='icons/q.png') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
@@ -18,26 +19,26 @@
 {% block navbar %}
     <!-- 修改'navbar-expand-lg'为'navbar-expand-md'，将折叠断点由991px降到768px -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Q<span class="v">v</span>ault</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">Q<span class="v">v</span>ault</a>
+{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">#}
+{#            <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <!-- 删除'ul class'中的'mr-auto'，该属性使ul撑满父容器，导致往其后添加的块被挤到父容器最右端 -->
+{#        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">#}
+{#            <!-- 删除'ul class'中的'mr-auto'，该属性使ul撑满父容器，导致往其后添加的块被挤到父容器最右端 -->#}
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ url_for('main.index') }}"><i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-feather-alt"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-video"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
-                </li>
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link active" href="{{ url_for('main.index') }}"><i class="fas fa-home"></i><span class="sr-only">(current)</span></a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#"><i class="fas fa-feather-alt"></i></a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#"><i class="fas fa-video"></i></a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>#}
+{#                </li>#}
             </ul>
             <!-- 沿用Bootstrap按钮的class命名规则，可保留其基本风格 -->
             {% if current_user.is_authenticated %}
@@ -47,7 +48,7 @@
                     <div class="dropdown-content">
                         <div class="menu-avatar-wrap"><div id="menu-avatar" class="avatar"></div></div>
                         <div class="account-info"><span class="username">{{ current_user.username }}</span><br>{{ current_user.email or current_user.mobile}}</div>
-                        <div class="menu-item user-page"><i class="bi bi-person-circle"></i>我的主页</div>
+                        <div class="menu-item"><i class="bi bi-person-circle"></i>我的主页</div>
                         <div class="menu-item"><i class="bi bi-gear"></i>个人设置</div>
                         <div class="menu-item" id="switch-account" data-toggle="modal" data-target="#authModal"><i class="bi bi-person-plus"></i>切换账号</div>
                         <div class="button-wrap"><a href="{{ url_for('auth.logout') }}" id="exit-btn" class="btn btn-outline-custom">退出</a></div>
@@ -56,10 +57,10 @@
             {% else %}
                 <button class="btn btn-outline-custom" data-toggle="modal" data-target="#authModal" id="login-btn">登录</button>
             {% endif %}
-        </div>
+{#        </div>#}
     </nav>
     <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered" id="auth-dialog">
             <div class="modal-content" id="modal-content" >
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -76,7 +77,7 @@
 
 <!-- 注：block的名称不能包含连接号'-'，否则会报错，可用下划线代替 -->
 {% block body_content %}{% endblock %}
-
+<script>var msg={{ get_flashed_messages() | tojson }}</script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="{{ url_for('static',filename='js/base.js')}}"></script>

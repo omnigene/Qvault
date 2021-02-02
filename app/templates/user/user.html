@@ -7,11 +7,12 @@
 
 {% block body_content %}
     <div class="user-page">
+        <div id="alert" class="alert alert-primary" role="alert"><span></span></div>
         <div class="user-card">
             <div class="user-banner"></div>
             <div class="info-head">
                 <div class="user-avatar-wrap"><div id="user-avatar" class="avatar"></div></div>
-                <div class="user-text">
+                <div class="profile-edit">
                     <button class="btn btn-outline-custom" data-toggle="modal" data-target="#profileModal">编辑个人资料</button>
                 </div>
             </div>
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div id="user-content"></div>
-        <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" id="profileModal-dialog">
                 <div class="modal-content profile" id="modal-content" >
                     <div class="modal-header profile">
@@ -31,6 +32,25 @@
                     </div>
                     <div class="modal-body">
                         <iframe class="profile-frame" src="/profile" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" id="imageModal-dialog">
+                <div class="modal-content image" id="modal-content" >
+                    <div class="modal-header image">
+                        <div class="img-close" data-dismiss="modal"><i class="bi bi-x"></i></div>
+                        <button class="btn btn-outline-custom">保存</button>
+                    </div>
+                    <div class="modal-body image">
+                        <img class="img-preview" src="" alt="">
+                        <div class="img-mask"></div>
+                    </div>
+                    <div class="range-wrap">
+                        <i class="bi bi-dash" style="color:black"></i>
+                        <input type="range" class="img-range" id="imgRange">
+                        <i class="bi bi-plus"></i>
                     </div>
                 </div>
             </div>

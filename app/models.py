@@ -13,33 +13,29 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     name=db.Column(db.String(64))
-    # gender=db.Column(db.Boolean(),nullable=True)
+    birth=db.Column(db.Date())
     location=db.Column(db.String(64))
-    about_me=db.Column(db.Text( ))
+    about_me=db.Column(db.Text())
+    link=db.Column(db.String(100))
     member_since=db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen=db.Column(db.DateTime(),default=datetime.utcnow)
-
     # 禁止通过用户模型的密码属性来读取用户密码
     @property
     def password(self):
         raise AttributeError('密码属性不可读取！')
-
     # 对用户输入的密码进行哈希加密后再写入数据库
     @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
-
     # 对用户输入的密码进行哈希验证（即与数据库中存储的哈希密码进行校验）
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
-
     def avatar_hash(self):
         return hashlib.md5(self.username.lower().encode('utf-8')+str(self.member_since).lower().encode('utf-8')).hexdigest()
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
-
     def record(self):
         self.last_seen=datetime.utcnow()
         db.session.add(self)

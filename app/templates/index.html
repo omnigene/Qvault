@@ -3,8 +3,10 @@
 
 {% block head_content %}
     <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+    <script src="{{ url_for('static',filename='js/functions.js') }}"></script>
 {% endblock %}
 
 {% block body_content %}
+    <div id="alert" class="alert alert-primary" role="alert"><span></span></div>
     <script src="{{ url_for('static',filename='js/index.js')}}"></script>
 {% endblock %}

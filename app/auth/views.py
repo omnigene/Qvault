@@ -97,6 +97,7 @@ def login():
     if request.method=='POST':
         user=User.query.filter(or_(User.username==account,User.mobile==account,User.email==account)).first()
         login_user(user,form.remember_me.data)
+        flash('您已登录成功。')
         return redirect(url_for('main.index'))
     return render_template('auth/login.html', form=form)
 
@@ -109,4 +110,5 @@ def before_request():
 @auth.route('/logout')
 def logout():
     logout_user()
+    flash("您已退出登录。")
     return redirect(url_for('main.index'))

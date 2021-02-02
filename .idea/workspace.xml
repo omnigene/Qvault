@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f47b6466-0389-4e07-be26-399f9dfedaec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/static/css/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/user.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/base.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user/form_constructor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user/user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/user/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/user/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/user/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/js/functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/views.py" afterDir="false" />
@@ -20,28 +10,38 @@
       <change beforePath="$PROJECT_DIR$/app/static/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/base.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/user/form_constructor.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/form_constructor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Qvault" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -63,12 +63,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Practice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JS" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -179,6 +179,29 @@
       <workItem from="1609812745262" duration="15138000" />
       <workItem from="1609897342532" duration="13427000" />
       <workItem from="1609987568676" duration="13544000" />
+      <workItem from="1610069815004" duration="13861000" />
+      <workItem from="1610115538089" duration="3546000" />
+      <workItem from="1610156288872" duration="6357000" />
+      <workItem from="1610177867323" duration="10697000" />
+      <workItem from="1610240955490" duration="3394000" />
+      <workItem from="1610249668631" duration="4014000" />
+      <workItem from="1610265031337" duration="19577000" />
+      <workItem from="1610327011793" duration="12341000" />
+      <workItem from="1610416338387" duration="11868000" />
+      <workItem from="1610501765373" duration="21257000" />
+      <workItem from="1610584947731" duration="2208000" />
+      <workItem from="1610677146442" duration="15742000" />
+      <workItem from="1610884259951" duration="213000" />
+      <workItem from="1610885407470" duration="214000" />
+      <workItem from="1611112370395" duration="19831000" />
+      <workItem from="1611818624702" duration="46000" />
+      <workItem from="1611818689126" duration="314000" />
+      <workItem from="1611819017194" duration="6569000" />
+      <workItem from="1611879849759" duration="46892000" />
+      <workItem from="1612010224256" duration="8420000" />
+      <workItem from="1612052074504" duration="10073000" />
+      <workItem from="1612140403707" duration="18827000" />
+      <workItem from="1612228474128" duration="511000" />
     </task>
     <servers />
   </component>
@@ -203,38 +226,42 @@
       <screen x="0" y="0" width="1234" height="783" />
     </state>
     <state x="210" y="50" key="#Notifications/0.0.1234.783@0.0.1234.783" timestamp="1608348564472" />
-    <state x="398" y="146" key="FileChooserDialogImpl" timestamp="1609674066461">
+    <state x="398" y="146" key="FileChooserDialogImpl" timestamp="1612012164521">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
-    <state x="398" y="146" key="FileChooserDialogImpl/0.0.1234.783@0.0.1234.783" timestamp="1609674066461" />
-    <state width="1191" height="178" key="GridCell.Tab.0.bottom" timestamp="1610009109241">
+    <state x="398" y="146" key="FileChooserDialogImpl/0.0.1234.783@0.0.1234.783" timestamp="1612012164521" />
+    <state width="1191" height="200" key="GridCell.Tab.0.bottom" timestamp="1612171281436">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
-    <state width="1191" height="178" key="GridCell.Tab.0.bottom/0.0.1234.783@0.0.1234.783" timestamp="1610009109241" />
-    <state width="1191" height="178" key="GridCell.Tab.0.center" timestamp="1610009109241">
+    <state width="1191" height="200" key="GridCell.Tab.0.bottom/0.0.1234.783@0.0.1234.783" timestamp="1612171281436" />
+    <state width="1191" height="200" key="GridCell.Tab.0.center" timestamp="1612171281436">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
-    <state width="1191" height="178" key="GridCell.Tab.0.center/0.0.1234.783@0.0.1234.783" timestamp="1610009109241" />
-    <state width="1191" height="178" key="GridCell.Tab.0.left" timestamp="1610009109241">
+    <state width="1191" height="200" key="GridCell.Tab.0.center/0.0.1234.783@0.0.1234.783" timestamp="1612171281436" />
+    <state width="1191" height="200" key="GridCell.Tab.0.left" timestamp="1612171281436">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
-    <state width="1191" height="178" key="GridCell.Tab.0.left/0.0.1234.783@0.0.1234.783" timestamp="1610009109241" />
-    <state width="1191" height="178" key="GridCell.Tab.0.right" timestamp="1610009109241">
+    <state width="1191" height="200" key="GridCell.Tab.0.left/0.0.1234.783@0.0.1234.783" timestamp="1612171281436" />
+    <state width="1191" height="200" key="GridCell.Tab.0.right" timestamp="1612171281436">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
-    <state width="1191" height="178" key="GridCell.Tab.0.right/0.0.1234.783@0.0.1234.783" timestamp="1610009109241" />
+    <state width="1191" height="200" key="GridCell.Tab.0.right/0.0.1234.783@0.0.1234.783" timestamp="1612171281436" />
     <state x="461" y="102" key="RollbackChangesDialog" timestamp="1608437444013">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
     <state x="461" y="102" key="RollbackChangesDialog/0.0.1234.783@0.0.1234.783" timestamp="1608437444013" />
-    <state x="119" y="33" key="SettingsEditor" timestamp="1609308149806">
+    <state x="156" y="0" key="SettingsEditor" timestamp="1610333205374">
       <screen x="0" y="0" width="1234" height="783" />
     </state>
-    <state x="119" y="33" key="SettingsEditor/0.0.1234.783@0.0.1234.783" timestamp="1609308149806" />
+    <state x="156" y="0" key="SettingsEditor/0.0.1234.783@0.0.1234.783" timestamp="1610333205374" />
+    <state x="280" y="104" width="672" height="678" key="search.everywhere.popup" timestamp="1612160185751">
+      <screen x="0" y="0" width="1234" height="783" />
+    </state>
+    <state x="280" y="104" width="672" height="678" key="search.everywhere.popup/0.0.1234.783@0.0.1234.783" timestamp="1612160185751" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Qvault$Qvault.coverage" NAME="Qvault Coverage Results" MODIFIED="1603160575860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1610006813773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py_.coverage" NAME="Flask (qvault.py) Coverage Results" MODIFIED="1612141334088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Qvault$Flask__qvault_py___1_.coverage" NAME="Flask (qvault.py) (1) Coverage Results" MODIFIED="1607390396784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

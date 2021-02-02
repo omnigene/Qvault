@@ -2,7 +2,7 @@ body{
     background-color: whitesmoke;
 }
 .navbar{
-    padding: 6px 6%;
+    padding: 0 5%;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
     background-color: white!important;
 }
@@ -45,7 +45,7 @@ button{
     display: flex;
     justify-content:center;  /*水平居中*/
     align-items:center;   /*垂直居中*/
-    border: solid 1.2px #004aed;
+    border: solid 1.5px #004aed;
 }
 .nav-avatar-wrap:hover{
     cursor: pointer;
@@ -105,7 +105,7 @@ button{
     color: #004aed;
 }
 .menu-item{
-    padding-left: 45px;
+    padding-left: 50px;
     line-height: 39px;
     vertical-align: middle;
     font-size: 16px;
@@ -127,6 +127,12 @@ i{
     text-align: center;
 }
 /*登录&注册模态框*/
+.modal-dialog{
+    min-width: 450px;
+}
+#auth-dialog {
+    width:36%;
+}
 .modal-content{
     background-color: whitesmoke;
 }
@@ -135,13 +141,20 @@ i{
     padding:5px 10px;
 }
 .modal-body{
-    padding-top: 0;
-}
-.modal-dialog {
-    max-width: 33%;
-    min-width: 450px;
 }
 .login-frame{
     width:100%;
     border:none;
+}
+/*消息闪现样式*/
+.alert{
+    margin-top: 10px;
+    margin-bottom: 0;
+    width: 100%;
+    background-color: #004aed;
+    border: none;
+    color: white;
+    display: none;
+    padding: 5px 20px;
+    padding-bottom: 10px;
 }

@@ -48,6 +48,6 @@ $(function () {
         e.stopPropagation();
     })
     $('.menu-item.user-page').click(function () {
-        window.open("/user","_self");
+        window.open("/user/"+$(".username").text(),"_self");
     })
 });

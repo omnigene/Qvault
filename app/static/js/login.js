@@ -22,14 +22,11 @@ $(function () {
     var times_icon='<i class="bi bi-exclamation-diamond"></i>';
     var check_icon='<i class="bi bi-check-circle-fill"></i>';
     if (msg[0]!==undefined) {
-        showMessage(check_icon,msg[0])
-    }
-    function showMessage(icon,msg) {
-        alt.children().html(icon+msg);
-        alt.slideDown("slow");
-        setTimeout(function () {
-            alt.slideUp("slow");
-        },3000);
+        if (msg[0]==='该页面需登录后访问！'){
+            alt.css("background-color","black");
+            flashMessage(alt,times_icon,msg[0]);
+        }
+        else {flashMessage(alt,check_icon,msg[0]);}
     }
     function loginCheck(acct,pwd) {
         var tof=true;
@@ -42,7 +39,7 @@ $(function () {
                 if (data==='false'){
                     tof=false;
                     alt.css("background-color","black");
-                    showMessage(times_icon,"账号或密码错误！")
+                    flashMessage(alt,times_icon,"账号或密码错误！")
                 }
             }
         });

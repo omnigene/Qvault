@@ -125,7 +125,7 @@ $(document).ready(function () {
         focus: function () {
             if ($(this).val()==='') {
                 $(this).siblings().last().removeClass("errors-icon").empty();
-                $(this).css({"border-color":"#0052e6","box-shadow":"0 0 15px rgba(0,91,255,0.3)"});
+                $(this).css({"border-color":"#004aed","box-shadow":"0 0 15px rgba(0,91,255,0.3)"});
             }
         },
         blur: checkInput,
@@ -218,7 +218,7 @@ $(document).ready(function () {
     }
     $("input[type='checkbox'].switch").change(function () {
         if ($("input[type='checkbox'].switch").is(":checked")===false){
-            switchEvent(mobile,email,"#0052e6");
+            switchEvent(mobile,email,"#004aed");
         }
         else{
             switchEvent(email,mobile,"black");
